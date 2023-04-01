@@ -1,12 +1,11 @@
 import Head from "next/head"
 import { Inter } from "next/font/google"
 import styles from "@/styles/Home.module.css"
-import React, { useState, useEffect } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
 const Home = ({ popularList }) => {
-  console.log(popularList, "This is the list of movies")
+  // console.log(popularList, "This is the list of movies")
   return (
     <>
       <Head>

@@ -1,5 +1,7 @@
 #MOOVIES
 
+Welcome to the Moovies! This is an online platform where you can search for movies, leave comments and reviews, and interact with other movie enthusiasts.
+
 ##Features
 
 -Search for movies by title, actor, director, genre, or release year

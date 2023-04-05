@@ -1,3 +1,50 @@
-.navbar {
-  color: blue;
+main {
+  background-color: rgb(49, 57, 65);
+  color: white;
+  padding-top: 20px;
 }
+.card-txt-container {
+  color: black;
+}
+
+.row-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 0px 15px 0px 15px;
+  background-color: black;
+}
+
+.col-container {
+  display: flex;
+  margin: 15px;
+}
+
+.title-txt {
+  color: black;
+}
+
+.sub-title {
+  color: rgb(231, 231, 250);
+  margin: 20px 0px;
+}
+
+.card-container {
+  margin-top: 20px;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  margin-left: 5px;
+}
+
+.background-box {
+  /* padding-top: 10px;
+  padding-bottom: 10px; */
+
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: black;
+}
+
+/* .form-container {
+  height: 10px;
+  align-items: center;
+} */

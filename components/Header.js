@@ -10,7 +10,9 @@ const Header = () => {
     <>
       <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">MOOVIES</Navbar.Brand>
+          <div className="title">
+            <Navbar.Brand href="#home">MOOVIES</Navbar.Brand>
+          </div>
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
@@ -31,7 +33,7 @@ const Header = () => {
             </Nav>
 
             <Nav>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Nav.Link href="#pricing">Home</Nav.Link>
               <NavDropdown title="Menu" id="collasible-nav-dropdown">
                 <div className="nav-menu-container">
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

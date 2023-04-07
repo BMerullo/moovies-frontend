@@ -6,11 +6,11 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Card from "react-bootstrap/Card"
 import Carousel from "react-bootstrap/Carousel"
+import PopularSidescroll from "@/components/PopularSidescroll"
 
 const inter = Inter({ subsets: ["latin"] })
 
 const Home = ({ popularList }) => {
-  console.log(popularList, "This is the list of movies")
   return (
     <>
       <Head>
@@ -24,66 +24,7 @@ const Home = ({ popularList }) => {
       </Head>
       <main>
         <Container>
-          <h2 className="sub-title">Popular Right Now</h2>
-          <div className="background-box">
-            <section className="row-container">
-              {popularList.results.map((movie, index) => {
-                return (
-                  <Col>
-                    <div className="card-container">
-                      <Card style={{ width: "17rem" }}>
-                        <Card.Img
-                          className="rounded "
-                          variant="top"
-                          src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                        />
-                      </Card>
-                    </div>
-                  </Col>
-                )
-              })}
-            </section>
-          </div>
-          <h2 className="sub-title">Popular Right Now</h2>
-          <div className="background-box">
-            <section className="row-container">
-              {popularList.results.map((movie, index) => {
-                return (
-                  <Col>
-                    <div className="card-container">
-                      <Card style={{ width: "17rem" }}>
-                        <Card.Img
-                          className="rounded "
-                          variant="top"
-                          src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                        />
-                      </Card>
-                    </div>
-                  </Col>
-                )
-              })}
-            </section>
-          </div>
-          <h2 className="sub-title">Popular Right Now</h2>
-          <div className="background-box">
-            <section className="row-container">
-              {popularList.results.map((movie, index) => {
-                return (
-                  <Col>
-                    <div className="card-container">
-                      <Card style={{ width: "17rem" }}>
-                        <Card.Img
-                          className="rounded "
-                          variant="top"
-                          src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                        />
-                      </Card>
-                    </div>
-                  </Col>
-                )
-              })}
-            </section>
-          </div>
+          <PopularSidescroll popularList={popularList} />
         </Container>
       </main>
     </>

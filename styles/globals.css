@@ -1,7 +1,8 @@
 main {
-  background-color: rgb(49, 57, 65);
+  background: linear-gradient(rgb(49, 57, 65), #000000);
+  /* background-color: rgb(49, 57, 65); */
   color: white;
-  padding-top: 20px;
+  padding: 20px 0px;
 }
 .card-txt-container {
   color: black;
@@ -9,8 +10,9 @@ main {
 
 .row-container {
   display: flex;
+
   overflow-x: auto;
-  padding: 0px 15px 0px 15px;
+  padding: 0px 15px 0px 0px;
   background-color: black;
 }
 
@@ -35,6 +37,10 @@ main {
   margin-left: 5px;
 }
 
+.card-container:hover {
+  scale: 1.1;
+}
+
 .background-box {
   /* padding-top: 10px;
   padding-bottom: 10px; */
@@ -48,3 +54,10 @@ main {
   height: 10px;
   align-items: center;
 } */
+.title {
+  margin: 12px 0px;
+}
+
+.new-release {
+  margin: auto;
+}

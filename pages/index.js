@@ -1,11 +1,6 @@
 import Head from "next/head"
 import { Inter } from "next/font/google"
-import styles from "@/styles/Home.module.css"
 import Container from "react-bootstrap/Container"
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
-import Card from "react-bootstrap/Card"
-import Carousel from "react-bootstrap/Carousel"
 import PopularSidescroll from "@/components/PopularSidescroll"
 
 const inter = Inter({ subsets: ["latin"] })

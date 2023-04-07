@@ -1,6 +1,7 @@
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Card from "react-bootstrap/Card"
+import styles from "../styles/Sidescroll.module.css"
 
 const PopularSidescroll = ({ popularList }) => {
   console.log(popularList, "This is the list of movies")
@@ -26,7 +27,7 @@ const PopularSidescroll = ({ popularList }) => {
           })}
         </section>
       </div>
-      <h2 className="sub-title">New Releases</h2>
+      <h2 className={styles.Sidescrollcss}>New Releases</h2>
 
       <Row>
         {popularList.results.map((movie, index) => {
@@ -50,17 +51,3 @@ const PopularSidescroll = ({ popularList }) => {
 }
 
 export default PopularSidescroll
-
-// export async function getServerSideProps() {
-//   const response = await fetch(
-//     `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=76e97ee4b0b9bbd10b8a54f5b87265c0`
-//   )
-//   const data = await response.json()
-//   // console.log(data)
-
-//   return {
-//     props: {
-//       popularList: data,
-//     },
-//   }
-// }

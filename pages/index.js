@@ -1,37 +1,28 @@
 import Head from "next/head"
 import { Inter } from "next/font/google"
-import styles from "@/styles/Home.module.css"
-import React, { useState, useEffect } from "react"
+import Container from "react-bootstrap/Container"
+import PopularSidescroll from "@/components/PopularSidescroll"
+import NowPlayingCarousel from "@/components/NowPlayingCarousel"
 
 const inter = Inter({ subsets: ["latin"] })
 
-const Home = ({ popularList }) => {
-  console.log(popularList, "This is the list of movies")
+const Home = ({ popularList, playingList }) => {
   return (
     <>
       <Head>
         <title>MOOVIES</title>
         <meta
           name="description"
-          content="Community for people who love movies"
+          content="A Community for people who like movies"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/CowLogo13.jpeg" />
       </Head>
-      <main className={styles.main}>
-        <h1>MOOVIES</h1>
-        {popularList.results.map((movie, index) => {
-          return (
-            <div key={index}>
-              <p>{movie.title}</p>
-              <img
-                src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt="image"
-              />
-            </div>
-          )
-        })}
-        <p>A community for people who like movies</p>
+      <main>
+        <Container>
+          <PopularSidescroll popularList={popularList} />
+          <NowPlayingCarousel playingList={playingList} />
+        </Container>
       </main>
     </>
   )
@@ -39,15 +30,20 @@ const Home = ({ popularList }) => {
 export default Home
 
 export async function getServerSideProps() {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=76e97ee4b0b9bbd10b8a54f5b87265c0`
+  const popularResponse = await fetch(
+    `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=1d1f8fe4a0523780c901154040d7aa0c`
   )
-  const data = await response.json()
-  // console.log(data)
+  const popularData = await popularResponse.json()
 
+  const playingResponse = await fetch(
+    `https://api.themoviedb.org/3/movie/now_playing?&language=en-US&page=1&region=US&api_key=1d1f8fe4a0523780c901154040d7aa0c`
+  )
+  const playingData = await playingResponse.json()
+  console.log("Now Playing", playingData)
   return {
     props: {
-      popularList: data,
+      popularList: popularData,
+      playingList: playingData,
     },
   }
 }

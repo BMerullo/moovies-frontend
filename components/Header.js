@@ -26,7 +26,7 @@ const Header = () => {
                   className="me-2"
                   aria-label="Search"
                 />
-                <Button variant="outline-primary" size="sm">
+                <Button variant="outline-primary" size="btn-sm">
                   Search
                 </Button>
               </Form>

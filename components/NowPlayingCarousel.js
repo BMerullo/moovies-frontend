@@ -13,16 +13,16 @@ const NewReleaseCarousel = ({ playingList }) => {
           return (
             <Carousel.Item>
               <section className={styles.item}>
-                <img
-                  className="rounded"
-                  src={`http://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-                  alt="movie image"
-                />
                 <article className={styles.caption}>
                   <h3>{movie.title}</h3>
                   <p>{movie.overview}</p>
                   <p>{movie.release_date}</p>
                 </article>
+                <img
+                  className={styles.img}
+                  src={`http://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                  alt="movie image"
+                />
               </section>
               {/* <section className={styles.caption}></section> */}
             </Carousel.Item>

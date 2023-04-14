@@ -1,15 +1,21 @@
 .carousel {
-  background-color: black;
+  background-color: #212529;
+  border-color: black 2px;
   padding: 20px 40px;
   border-radius: 1rem;
 }
 
 .caption {
   padding-top: 20px;
-  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .item {
   display: flex;
   margin-bottom: 30px;
+}
+
+.img {
+  border-radius: 4px;
+  height: 50vh;
 }

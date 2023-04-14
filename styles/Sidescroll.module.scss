@@ -2,6 +2,7 @@
   display: flex;
   overflow-x: auto;
   background-color: black;
+  padding: 0px 5px;
 }
 
 .card {
@@ -16,7 +17,7 @@
 }
 
 .backgroundBox {
-  padding-left: 20px;
+  padding-left: 15px;
   padding-right: 20px;
   background-color: black;
   border-radius: 1rem;

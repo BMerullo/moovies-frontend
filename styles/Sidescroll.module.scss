@@ -1,7 +1,12 @@
 .rowContainer {
   display: flex;
   overflow-x: auto;
-  background-color: black;
+  background-color: transparent;
+  padding: 0px 5px;
+}
+
+.scrollable-element {
+  scrollbar-color: red yellow;
 }
 
 .card {
@@ -16,7 +21,7 @@
 }
 
 .backgroundBox {
-  padding-left: 20px;
+  padding-left: 15px;
   padding-right: 20px;
   background-color: black;
   border-radius: 1rem;

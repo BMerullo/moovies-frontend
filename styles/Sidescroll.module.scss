@@ -1,8 +1,12 @@
 .rowContainer {
   display: flex;
   overflow-x: auto;
-  background-color: black;
+  background-color: transparent;
   padding: 0px 5px;
+}
+
+.scrollable-element {
+  scrollbar-color: red yellow;
 }
 
 .card {

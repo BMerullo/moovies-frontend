@@ -13,14 +13,15 @@ const PopularShowSidescroll = ({ popularShowList }) => {
             return (
               <Col>
                 <div className={styles.card}>
-                  <Card style={{ width: "10rem" }}>
-                    <Card.Img
-                      className="rounded "
-                      variant="top"
-                      src={`http://image.tmdb.org/t/p/w500/${show.poster_path}`}
-                    />
-                    {/* <p>{show.title}</p> */}
-                  </Card>
+                  <a href={`tv/${show.id}`}>
+                    <Card style={{ width: "10rem" }}>
+                      <Card.Img
+                        className="rounded "
+                        variant="top"
+                        src={`http://image.tmdb.org/t/p/w500/${show.poster_path}`}
+                      />
+                    </Card>
+                  </a>
                 </div>
               </Col>
             )

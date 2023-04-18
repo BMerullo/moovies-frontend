@@ -12,13 +12,15 @@ const PopularSidescroll = ({ popularList }) => {
             return (
               <Col>
                 <div className={styles.card}>
-                  <Card style={{ width: "10rem" }}>
-                    <Card.Img
-                      className="rounded "
-                      variant="top"
-                      src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                    />
-                  </Card>
+                  <a href={`movie/${movie.id}`}>
+                    <Card style={{ width: "10rem" }}>
+                      <Card.Img
+                        className="rounded "
+                        variant="top"
+                        src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                      />
+                    </Card>
+                  </a>
                 </div>
               </Col>
             )

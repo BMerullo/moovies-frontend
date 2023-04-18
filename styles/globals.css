@@ -13,3 +13,7 @@ main {
   color: #0d6efd;
   margin: 20px 0px 10px 0px;
 }
+
+.scrollable-element {
+  scrollbar-color: red yellow;
+}

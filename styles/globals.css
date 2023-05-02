@@ -1,8 +1,9 @@
 main {
   background: linear-gradient(rgb(49, 57, 65), #1a1919);
   color: white;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   display: flex;
+  padding-bottom: 100px;
 }
 
 .title {
@@ -16,4 +17,8 @@ main {
 
 .scrollable-element {
   scrollbar-color: red yellow;
+}
+
+footer {
+  margin-top: 30px;
 }

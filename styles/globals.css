@@ -1,7 +1,6 @@
 main {
   background: linear-gradient(rgb(49, 57, 65), #1a1919);
   color: white;
-  /* margin-bottom: 30px; */
   display: flex;
   padding-bottom: 100px;
 }
@@ -13,10 +12,6 @@ main {
 .subtitle {
   color: #0d6efd;
   margin: 20px 0px 10px 0px;
-}
-
-.scrollable-element {
-  scrollbar-color: red yellow;
 }
 
 footer {

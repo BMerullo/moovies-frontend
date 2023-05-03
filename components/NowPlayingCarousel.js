@@ -15,8 +15,8 @@ const NewReleaseCarousel = ({ playingList }) => {
               <section className={styles.item}>
                 <article className={styles.caption}>
                   <h3>{movie.title}</h3>
+
                   <p>{movie.overview}</p>
-                  <p>{movie.release_date}</p>
                 </article>
                 <img
                   className={styles.img}

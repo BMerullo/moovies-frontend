@@ -1,5 +1,6 @@
 import { useRouter } from "next/router"
 import { Card, Container } from "react-bootstrap"
+import styles from "/styles/SinglePage.module.scss"
 
 const singleMovie = ({ show }) => {
   const router = useRouter()
@@ -11,7 +12,7 @@ const singleMovie = ({ show }) => {
   return (
     <main>
       <Container>
-        <Card style={{ width: "25rem" }}>
+        <Card style={{ width: "100%" }}>
           <Card.Img
             className="rounded "
             variant="top"
@@ -19,7 +20,7 @@ const singleMovie = ({ show }) => {
           />
         </Card>
         <section>
-          <h2>{show.title}</h2>
+          <h2>{show.name}</h2>
           <h3>{show.tagline}</h3>
         </section>
       </Container>

@@ -33,7 +33,7 @@ const Header = () => {
             </Nav>
 
             <Nav>
-              <Nav.Link href="#pricing">Home</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
               <NavDropdown title="Menu" id="collasible-nav-dropdown">
                 <div className="nav-menu-container">
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

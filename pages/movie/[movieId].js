@@ -1,12 +1,8 @@
-import { useRouter } from "next/router"
 import { Card, Container, Button } from "react-bootstrap"
 import styles from "/styles/SinglePage.module.scss"
 import Image from "react-bootstrap/Image"
 
 const singleMovie = ({ movie }) => {
-  const router = useRouter()
-  const { movieId } = router.query
-
   const navigate = (e) => {}
 
   console.log("Info for Single movie", movie)
@@ -14,38 +10,31 @@ const singleMovie = ({ movie }) => {
 
   return (
     <main>
-      <Container className={styles.container}>
+      <Container>
         <Card className={styles.card}>
-          <section className={styles.imgContainer}>
-            <Card.Img
-              variant="top"
-              src={`http://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-            />
-            <header className={styles.imgOverlay}>
-              <h1>{movie.title}</h1>
-              <h3>{movie.tagline}</h3>
-            </header>
-          </section>
+          <Card.Img
+            className={styles.cardImg}
+            variant="top"
+            src={`http://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+          />
           <Card.Body className={styles.cardBody}>
-            <Card.Text>{movie.overview}</Card.Text>
-            <section>
-              <article>{/* <Card.Title>{movie.title}</Card.Title> */}</article>
-              <article className={styles.movieInfo}>
-                <div>
-                  <p>Runtime {movie.runtime} min.</p>
-                  {/* {movie.genre_ids.map((genre, index) => {
-                    return <p key={index}>{genre}</p>
-                  })} */}
-                  <Button variant="primary" onCLick={navigate}>
-                    Website
-                  </Button>
-                </div>
-                <Image
-                  className="rounded"
-                  src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                />
-              </article>
-            </section>
+            <content className={styles.content}>
+              <header className={styles.cardHeader}>
+                <Card.Title>{movie.title}</Card.Title>
+                <Card.Subtitle>{movie.tagline}</Card.Subtitle>
+              </header>
+              <section className="mb-2 text-muted">
+                <p>{movie.overview}</p>
+                <p>Language: {movie.original_language}</p>
+                <p>Status: {movie.status} </p>
+                <Button variant="primary">Webpage</Button>
+              </section>
+            </content>
+            <img
+              className={styles.poster}
+              src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt="movie poster"
+            />
           </Card.Body>
         </Card>
       </Container>

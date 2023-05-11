@@ -1,0 +1,35 @@
+.card {
+  background-color: black;
+  margin-top: 85px;
+}
+
+.cardHeader {
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 1199px) {
+  .poster {
+    position: relative;
+  }
+  .cardBody {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: baseline;
+
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.9);
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .card {
+    flex-direction: row;
+  }
+  .poster {
+    height: 95%;
+    border-radius: 4px;
+  }
+}

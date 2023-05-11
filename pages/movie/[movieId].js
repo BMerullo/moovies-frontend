@@ -27,7 +27,9 @@ const singleMovie = ({ movie }) => {
                 <p>{movie.overview}</p>
                 <p>Language: {movie.original_language}</p>
                 <p>Status: {movie.status} </p>
-                <Button variant="primary">Webpage</Button>
+                <a href={movie.homepage}>
+                  <Button variant="primary">Webpage</Button>
+                </a>
               </section>
             </content>
             <img

@@ -7,13 +7,19 @@ const NewReleaseCarousel = ({ playingList }) => {
   return (
     <>
       <h2 className="subtitle">In Theatres</h2>
+
       <Carousel className={styles.carousel} interval={10000} controls={false}>
         {playingList.results.map((movie, index) => {
           return (
             <Carousel.Item>
               <section className={styles.item}>
                 <article className={styles.caption}>
-                  <h3>{movie.title}</h3>
+                  <a
+                    className={styles.theatersLink}
+                    href={`/movie/${movie.id}`}
+                  >
+                    <h3>{movie.title}</h3>
+                  </a>
                   <p>{movie.overview}</p>
                 </article>
                 <img

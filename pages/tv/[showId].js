@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import { Card, Container } from "react-bootstrap"
-import styles from "/styles/SinglePage.module.scss"
+import styles from "/styles/SinglePageTv.module.scss"
 
 const singleMovie = ({ show }) => {
   const router = useRouter()
@@ -12,17 +12,24 @@ const singleMovie = ({ show }) => {
   return (
     <main>
       <Container>
-        <Card style={{ width: "100%" }}>
-          <Card.Img
-            className="rounded "
-            variant="top"
+        <Card className={styles.card}>
+          <img
+            className={styles.poster}
             src={`http://image.tmdb.org/t/p/w500/${show.poster_path}`}
+            alt="show poster"
           />
+          <Card.Body className={styles.cardBody}>
+            <header className={styles.cardHeader}>
+              <Card.Title>{show.name}</Card.Title>
+              <Card.Subtitle>{show.tagline}</Card.Subtitle>
+            </header>
+            <section>
+              <Card.Text className="mb-2 text-muted">{show.overview}</Card.Text>
+              <Card.Link href="#">Card Link</Card.Link>
+              <Card.Link href="#">Another Link</Card.Link>
+            </section>
+          </Card.Body>
         </Card>
-        <section>
-          <h2>{show.name}</h2>
-          <h3>{show.tagline}</h3>
-        </section>
       </Container>
     </main>
   )

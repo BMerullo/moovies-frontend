@@ -20,7 +20,7 @@ const NewReleaseCarousel = ({ playingList }) => {
                   >
                     <h3>{movie.title}</h3>
                   </a>
-                  <p>{movie.overview}</p>
+                  <p className="text-muted">{movie.overview}</p>
                 </article>
                 <img
                   className={styles.img}

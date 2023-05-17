@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Container from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
@@ -12,12 +12,11 @@ import axios from "axios"
 const Header = () => {
   const [searchWord, setSearchWord] = useState("")
   const [searchResult, setSearchResult] = useState(false)
-  const [trigger, setTrigger] = useState(false)
-  const search = (e) => {
-    // e.preventDefault()
-    setTrigger(!trigger)
-    setSearchWord(e.target.value)
 
+  const handleChange = (e) => {
+    setSearchWord(e.target.value)
+  }
+  useEffect(() => {
     axios
       .get(
         `https://api.themoviedb.org/3/search/multi?api_key=76e97ee4b0b9bbd10b8a54f5b87265c0&query=${searchWord}`
@@ -28,11 +27,7 @@ const Header = () => {
 
     console.log("Results from search", searchResult)
     console.log("Search Word", searchWord)
-  }
-
-  const close = () => {
-    setSearchResult(false)
-  }
+  }, [searchWord])
 
   return (
     <>
@@ -47,12 +42,12 @@ const Header = () => {
               <Form className="d-flex">
                 <Form.Control
                   size="sm"
-                  type="input"
+                  type="search"
                   placeholder="Search"
                   value={searchWord}
                   className="me-2"
                   aria-label="Search"
-                  onChange={search}
+                  onChange={handleChange}
                 />
               </Form>
             </Nav>
@@ -83,11 +78,6 @@ const Header = () => {
       <Container>
         {searchResult ? (
           <ListGroup>
-            <ListGroup.Item>
-              <Button variant="outline-primary" size="btn-sm" onClick={close}>
-                Clear Results
-              </Button>
-            </ListGroup.Item>
             {searchResult.map((result, index) => (
               <a href={`/${result.media_type}/${result.id}`}>
                 <ListGroup.Item key={index}>

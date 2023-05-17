@@ -20,7 +20,7 @@ const singleMovie = ({ show }) => {
           />
           <Card.Body className={styles.cardBody}>
             <header className={styles.cardHeader}>
-              <Card.Title>{show.name}</Card.Title>
+              <h1>{show.name}</h1>
               <Card.Subtitle>{show.tagline}</Card.Subtitle>
             </header>
             <section>

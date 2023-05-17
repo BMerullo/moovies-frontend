@@ -20,7 +20,7 @@ const singleMovie = ({ movie }) => {
           <Card.Body className={styles.cardBody}>
             <content className={styles.content}>
               <header className={styles.cardHeader}>
-                <Card.Title>{movie.title}</Card.Title>
+                <h1>{movie.title}</h1>
                 <Card.Subtitle>{movie.tagline}</Card.Subtitle>
               </header>
               <section className="mb-2 text-muted">

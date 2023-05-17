@@ -12,21 +12,27 @@ import axios from "axios"
 const Header = () => {
   const [searchWord, setSearchWord] = useState("")
   const [searchResult, setSearchResult] = useState(false)
-  const search = () => {
+  const [trigger, setTrigger] = useState(false)
+  const search = (e) => {
+    // e.preventDefault()
+    setTrigger(!trigger)
+    setSearchWord(e.target.value)
+
     axios
       .get(
         `https://api.themoviedb.org/3/search/multi?api_key=76e97ee4b0b9bbd10b8a54f5b87265c0&query=${searchWord}`
       )
       .then((res) => {
-        console.log(res.data.results)
         setSearchResult(res.data.results)
       })
-    console.log(searchResult)
+
+    console.log("Results from search", searchResult)
+    console.log("Search Word", searchWord)
   }
+
   const close = () => {
     setSearchResult(false)
   }
-  console.log(searchWord)
 
   return (
     <>
@@ -41,20 +47,13 @@ const Header = () => {
               <Form className="d-flex">
                 <Form.Control
                   size="sm"
-                  type="search"
+                  type="input"
                   placeholder="Search"
                   value={searchWord}
                   className="me-2"
                   aria-label="Search"
-                  onChange={(e) => setSearchWord(e.target.value)}
+                  onChange={search}
                 />
-                <Button
-                  variant="outline-primary"
-                  size="btn-sm"
-                  onClick={search}
-                >
-                  Search
-                </Button>
               </Form>
             </Nav>
             <Nav>
@@ -85,7 +84,9 @@ const Header = () => {
         {searchResult ? (
           <ListGroup>
             <ListGroup.Item>
-              Search Results <CloseButton onClick={close} />
+              <Button variant="outline-primary" size="btn-sm" onClick={close}>
+                Clear Results
+              </Button>
             </ListGroup.Item>
             {searchResult.map((result, index) => (
               <a href={`/${result.media_type}/${result.id}`}>

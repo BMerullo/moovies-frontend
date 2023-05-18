@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container"
 import PopularSidescroll from "@/components/PopularSidescroll"
 import NowPlayingCarousel from "@/components/NowPlayingCarousel"
 import PopularShowSidescroll from "@/components/PopularShowSidescroll"
+import PopularPeople from "@/components/PopularPeople"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -24,6 +25,7 @@ const Home = ({ popularList, playingList, popularShowList }) => {
           <PopularSidescroll popularList={popularList} />
           <NowPlayingCarousel playingList={playingList} />
           <PopularShowSidescroll popularShowList={popularShowList} />
+          <PopularPeople />
         </Container>
       </main>
     </>

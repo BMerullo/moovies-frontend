@@ -2,11 +2,9 @@ import { Card, Container, Button } from "react-bootstrap"
 import styles from "/styles/SinglePage.module.scss"
 import Image from "react-bootstrap/Image"
 
-const singleMovie = ({ movie }) => {
-  const navigate = (e) => {}
-
+const singleMovie = ({ movie, providers }) => {
+  console.log("These are the providers", providers)
   console.log("Info for Single movie", movie)
-  console.log(movie.genre_ids)
 
   return (
     <main>
@@ -30,6 +28,16 @@ const singleMovie = ({ movie }) => {
                 <a href={movie.homepage}>
                   <Button variant="primary">Webpage</Button>
                 </a>
+
+                {providers.results.AD.flatrate.map((provider, index) => {
+                  return (
+                    <img
+                      className={styles.providerLogo}
+                      src={`http://image.tmdb.org/t/p/w500/${provider.logo_path}`}
+                      alt="logo"
+                    />
+                  )
+                })}
               </section>
             </content>
             <img
@@ -53,10 +61,15 @@ export async function getServerSideProps(context) {
     `https://api.themoviedb.org/3/movie/${context.params.movieId}?api_key=1d1f8fe4a0523780c901154040d7aa0c&language=en-US`
   )
   const movieData = await movieResponse.json()
+  const providersResponse = await fetch(
+    `https://api.themoviedb.org/3/movie/${context.params.movieId}/watch/providers?api_key=1d1f8fe4a0523780c901154040d7aa0c&language=en-US`
+  )
+  const providersData = await providersResponse.json()
 
   return {
     props: {
       movie: movieData,
+      providers: providersData,
     },
   }
 }

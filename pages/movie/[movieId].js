@@ -1,8 +1,11 @@
+import React, { useState } from "react"
 import { Card, Container, Button } from "react-bootstrap"
 import styles from "/styles/SinglePage.module.scss"
 import Image from "react-bootstrap/Image"
 
 const singleMovie = ({ movie, providers }) => {
+  const [modalShow, setModalShow] = useState(false)
+
   console.log("These are the providers", providers)
   console.log("Info for Single movie", movie)
 
@@ -28,16 +31,9 @@ const singleMovie = ({ movie, providers }) => {
                 <a href={movie.homepage}>
                   <Button variant="primary">Webpage</Button>
                 </a>
-
-                {providers.results.AD.flatrate.map((provider, index) => {
-                  return (
-                    <img
-                      className={styles.providerLogo}
-                      src={`http://image.tmdb.org/t/p/w500/${provider.logo_path}`}
-                      alt="logo"
-                    />
-                  )
-                })}
+                <Button variant="primary" onClick={() => setModalShow(true)}>
+                  Launch vertically centered modal
+                </Button>
               </section>
             </content>
             <img

@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Card, Container, Button } from "react-bootstrap"
 import styles from "/styles/SinglePage.module.scss"
 import Image from "react-bootstrap/Image"
+import ProviderModal from "@/components/ProviderModal"
 
 const singleMovie = ({ movie, providers }) => {
   const [modalShow, setModalShow] = useState(false)
@@ -31,9 +32,10 @@ const singleMovie = ({ movie, providers }) => {
                 <a href={movie.homepage}>
                   <Button variant="primary">Webpage</Button>
                 </a>
-                <Button variant="primary" onClick={() => setModalShow(true)}>
-                  Launch vertically centered modal
-                </Button>
+                <article className={styles.streamingContainer}>
+                  <h3>Streaming On...</h3>
+                  <ProviderModal providers={providers} />
+                </article>
               </section>
             </content>
             <img

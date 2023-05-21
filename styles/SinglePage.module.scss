@@ -7,8 +7,19 @@
   margin-bottom: 20px;
 }
 
-.providerLogo {
-  width: 50px;
+.streamingContainer {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 1rem;
+  margin-top: 20px;
+  padding: 10px;
+  display: flex-wrap;
+  justify-content: space-between;
+  height: 100%;
+  overflow: auto;
+}
+
+.cardImg {
+  border-radius: 4px;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -24,11 +35,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.8);
   }
   .poster {
     height: 95%;
-    margin: 0px 60px;
+    margin: 0px 40px 0px 80px;
     border-radius: 4px;
   }
   .content {
@@ -39,5 +50,8 @@
 @media only screen and (max-width: 1199px) {
   .poster {
     display: none;
+  }
+  .card {
+    margin-top: 10px;
   }
 }

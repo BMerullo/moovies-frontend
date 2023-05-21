@@ -21,3 +21,8 @@ footer {
 .home {
   color: white;
 }
+
+.thumbnail {
+  width: 40px;
+  margin-right: 5px;
+}

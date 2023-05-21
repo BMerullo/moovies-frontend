@@ -81,6 +81,11 @@ const Header = () => {
             {searchResult.map((result, index) => (
               <a href={`/${result.media_type}/${result.id}`}>
                 <ListGroup.Item key={index}>
+                  <img
+                    className="thumbnail"
+                    src={`http://image.tmdb.org/t/p/w500/${result.poster_path}`}
+                    alt="logo"
+                  />
                   {result.title} {result.name}
                 </ListGroup.Item>
               </a>

@@ -1,12 +1,11 @@
 .rowContainer {
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
   background-color: transparent;
   padding: 0px 5px;
-}
-
-.scrollable-element {
-  scrollbar-color: red yellow;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .card {

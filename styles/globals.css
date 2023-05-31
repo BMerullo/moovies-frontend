@@ -26,3 +26,7 @@ footer {
   width: 40px;
   margin-right: 5px;
 }
+
+a {
+  text-decoration: none;
+}

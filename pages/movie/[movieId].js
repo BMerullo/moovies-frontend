@@ -1,12 +1,9 @@
 import React, { useState } from "react"
 import { Card, Container, Button } from "react-bootstrap"
 import styles from "/styles/SinglePage.module.scss"
-import Image from "react-bootstrap/Image"
 import ProviderModal from "@/components/ProviderModal"
 
 const singleMovie = ({ movie, providers }) => {
-  const [modalShow, setModalShow] = useState(false)
-
   console.log("These are the providers", providers)
   console.log("Info for Single movie", movie)
 

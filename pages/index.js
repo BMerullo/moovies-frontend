@@ -25,7 +25,7 @@ const Home = ({ popularList, playingList, popularShowList }) => {
           <PopularSidescroll popularList={popularList} />
           <NowPlayingCarousel playingList={playingList} />
           <PopularShowSidescroll popularShowList={popularShowList} />
-          <PopularPeople />
+          {/* <PopularPeople /> */}
         </Container>
       </main>
     </>

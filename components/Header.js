@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import Button from "react-bootstrap/Button"
 import Container from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import NavDropdown from "react-bootstrap/NavDropdown"
 import Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
+
 import ListGroup from "react-bootstrap/ListGroup"
-import CloseButton from "react-bootstrap/CloseButton"
+
 import axios from "axios"
 
 const Header = () => {
   const [searchWord, setSearchWord] = useState("")
   const [searchResult, setSearchResult] = useState(false)
+  const router = useRouter()
 
   const handleChange = (e) => {
     setSearchWord(e.target.value)
@@ -28,6 +31,16 @@ const Header = () => {
     console.log("Results from search", searchResult)
     console.log("Search Word", searchWord)
   }, [searchWord])
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const searchId = searchWord
+    if (searchWord) {
+      setSearchResult(false)
+      router.push(`/${searchResult[0].media_type}/${searchResult[0].id}`)
+    } else {
+      null
+    }
+  }
 
   return (
     <>
@@ -39,7 +52,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Form className="d-flex">
+              <Form className="d-flex" onSubmit={handleSubmit}>
                 <Form.Control
                   size="sm"
                   type="search"
@@ -49,6 +62,9 @@ const Header = () => {
                   aria-label="Search"
                   onChange={handleChange}
                 />
+                <Button variant="primary" type="submit">
+                  Search
+                </Button>
               </Form>
             </Nav>
             <Nav>
@@ -78,18 +94,23 @@ const Header = () => {
       <Container>
         {searchResult ? (
           <ListGroup>
-            {searchResult.map((result, index) => (
-              <a href={`/${result.media_type}/${result.id}`}>
-                <ListGroup.Item key={index}>
-                  <img
-                    className="thumbnail"
-                    src={`http://image.tmdb.org/t/p/w500/${result.poster_path}`}
-                    alt="logo"
-                  />
-                  {result.title} {result.name}
-                </ListGroup.Item>
-              </a>
-            ))}
+            {searchResult
+              .filter(
+                (result) =>
+                  result.media_type !== "person" && result.backdrop_path
+              )
+              .map((filter, index) => (
+                <a href={`/${filter.media_type}/${filter.id}`}>
+                  <ListGroup.Item key={index}>
+                    <img
+                      className="thumbnail"
+                      src={`http://image.tmdb.org/t/p/w500/${filter.poster_path}`}
+                      alt="logo"
+                    />
+                    {filter.title} {filter.name}
+                  </ListGroup.Item>
+                </a>
+              ))}
           </ListGroup>
         ) : null}
       </Container>

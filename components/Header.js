@@ -33,11 +33,12 @@ const Header = () => {
   }, [searchWord])
   const handleSubmit = (e) => {
     e.preventDefault()
-    const searchId = searchWord
-    if (searchWord) {
-      setSearchResult(false)
+
+    if (searchWord && searchResult[0]) {
       router.push(`/${searchResult[0].media_type}/${searchResult[0].id}`)
+      setSearchResult(false)
     } else {
+      // router.push("/error")
       null
     }
   }
@@ -56,7 +57,6 @@ const Header = () => {
                 <Form.Control
                   size="sm"
                   type="search"
-                  placeholder="Search"
                   value={searchWord}
                   className="me-2"
                   aria-label="Search"
@@ -73,16 +73,21 @@ const Header = () => {
               </Nav.Link>
               <NavDropdown title="Menu" id="collasible-nav-dropdown">
                 <div className="nav-menu-container">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
+                  <NavDropdown.Item href="/popular">
+                    Popular Movies
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
+                  <NavDropdown.Item href="/playing">
+                    Now Playing
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/populartv">
+                    Popular TV
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/catagories">
+                    Catagories
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.4">
-                    Separated link
+                    -User Home Page-
                   </NavDropdown.Item>
                 </div>
               </NavDropdown>

@@ -25,3 +25,25 @@
   background-color: black;
   border-radius: 1rem;
 }
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.subtitle {
+  color: #0d6efd;
+  margin: 20px 0px 10px 0px;
+}
+
+.subtitleLink {
+  color: #0d6efd;
+  width: 100%;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.link {
+  text-decoration: none;
+}

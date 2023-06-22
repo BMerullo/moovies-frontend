@@ -6,7 +6,9 @@ const NewReleaseCarousel = ({ playingList }) => {
   console.log("playingList", playingList)
   return (
     <>
-      <h2 className="subtitle">In Theatres</h2>
+      <section className={styles.title}>
+        <h2 className="subtitle">In Theatres</h2>
+      </section>
 
       <Carousel className={styles.carousel} interval={10000} controls={false}>
         {playingList.results.map((movie, index) => {

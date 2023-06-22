@@ -5,9 +5,16 @@ import styles from "../styles/Sidescroll.module.scss"
 const PopularSidescroll = ({ popularList }) => {
   return (
     <>
-      <h2 className="subtitle">Popular</h2>
-      <div className={styles.backgroundBox}>
-        <section className={styles.rowContainer}>
+      <section className={styles.title}>
+        <a className={styles.link} href="/popular">
+          <h2 className={styles.subtitle}>Popular</h2>
+        </a>
+        <a href="/popular">
+          <h7 className={styles.subtitleLink}>See All</h7>
+        </a>
+      </section>
+      <section className={styles.backgroundBox}>
+        <article className={styles.rowContainer}>
           {popularList.results.map((movie, index) => {
             return (
               <Col>
@@ -25,8 +32,8 @@ const PopularSidescroll = ({ popularList }) => {
               </Col>
             )
           })}
-        </section>
-      </div>
+        </article>
+      </section>
     </>
   )
 }

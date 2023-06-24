@@ -1,12 +1,10 @@
+import MovieLayout from "@/components/MovieLayout"
 import React from "react"
-import Container from "react-bootstrap/Container"
-import PopularLayout from "@/components/PopularLayout"
-import styles from "../styles/PopularPage.module.scss"
 
 const popular = ({ popularList }) => {
   return (
     <main>
-      <PopularLayout popularList={popularList} />
+      <MovieLayout list={popularList} />
     </main>
   )
 }

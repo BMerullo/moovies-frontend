@@ -24,6 +24,18 @@
   color: white;
   text-decoration: none;
 }
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.subtitleLink {
+  color: #0d6efd;
+  width: 100%;
+  text-align: right;
+  margin-right: 20px;
+}
 
 @media only screen and (max-width: 1200px) {
   .img {

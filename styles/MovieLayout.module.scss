@@ -1,0 +1,38 @@
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  // margin: 30px 120px 0px 130px;
+}
+.card {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding: 20px 12px 20px 12px;
+}
+
+.subtitle {
+  color: #0d6efd;
+  padding-top: 20px;
+}
+
+.text {
+  height: 200px;
+  overflow: auto;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 477px) {
+  .flex {
+    margin: auto;
+  }
+  .card {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+  }
+}

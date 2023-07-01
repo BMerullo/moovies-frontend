@@ -6,29 +6,30 @@ const NewReleaseCarousel = ({ playingList }) => {
   console.log("playingList", playingList)
   return (
     <>
-      <h2 className="subtitle">In Theatres</h2>
+      <section className={styles.title}>
+        <h2 className="subtitle">In Theatres</h2>
+        <a href="/playing">
+          <h7 className={styles.subtitleLink}>See All</h7>
+        </a>
+      </section>
 
       <Carousel className={styles.carousel} interval={10000} controls={false}>
         {playingList.results.map((movie, index) => {
           return (
             <Carousel.Item>
-              <section className={styles.item}>
-                <article className={styles.caption}>
-                  <a
-                    className={styles.theatersLink}
-                    href={`/movie/${movie.id}`}
-                  >
+              <a className={styles.theatersLink} href={`/movie/${movie.id}`}>
+                <section className={styles.item}>
+                  <article className={styles.caption}>
                     <h3>{movie.title}</h3>
-                  </a>
-                  <p className="text-muted">{movie.overview}</p>
-                </article>
-                <img
-                  className={styles.img}
-                  src={`http://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-                  alt="movie image"
-                />
-              </section>
-              {/* <section className={styles.caption}></section> */}
+                    <p className="text-muted">{movie.overview}</p>
+                  </article>
+                  <img
+                    className={styles.img}
+                    src={`http://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                    alt="movie image"
+                  />
+                </section>
+              </a>
             </Carousel.Item>
           )
         })}

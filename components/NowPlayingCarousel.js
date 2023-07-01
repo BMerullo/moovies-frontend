@@ -8,6 +8,9 @@ const NewReleaseCarousel = ({ playingList }) => {
     <>
       <section className={styles.title}>
         <h2 className="subtitle">In Theatres</h2>
+        <a href="/playing">
+          <h7 className={styles.subtitleLink}>See All</h7>
+        </a>
       </section>
 
       <Carousel className={styles.carousel} interval={10000} controls={false}>
@@ -26,7 +29,6 @@ const NewReleaseCarousel = ({ playingList }) => {
                     alt="movie image"
                   />
                 </section>
-                {/* <section className={styles.caption}></section> */}
               </a>
             </Carousel.Item>
           )

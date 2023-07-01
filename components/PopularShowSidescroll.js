@@ -6,7 +6,14 @@ const PopularShowSidescroll = ({ popularShowList }) => {
   console.log(popularShowList, "This is the list of shows")
   return (
     <>
-      <h2 className="subtitle">Popular TV Shows</h2>
+      <section className={styles.title}>
+        <a className={styles.link} href="/popularTV">
+          <h2 className={styles.subtitle}>Popular Shows</h2>
+        </a>
+        <a href="/popularTV">
+          <h7 className={styles.subtitleLink}>See All</h7>
+        </a>
+      </section>
       <div className={styles.backgroundBox}>
         <section className={styles.rowContainer}>
           {popularShowList.results.map((show, index) => {

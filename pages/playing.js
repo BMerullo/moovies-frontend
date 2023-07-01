@@ -1,10 +1,13 @@
 import React from "react"
 import MovieLayout from "@/components/MovieLayout"
+import { Container } from "react-bootstrap"
 
 const nowPlaying = ({ playingList }) => {
   return (
     <main>
-      <MovieLayout list={playingList} />
+      <Container>
+        <MovieLayout list={playingList} title="Now Playing" />
+      </Container>
     </main>
   )
 }

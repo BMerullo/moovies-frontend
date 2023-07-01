@@ -1,10 +1,13 @@
 import MovieLayout from "@/components/MovieLayout"
 import React from "react"
+import { Container } from "react-bootstrap"
 
 const popular = ({ popularList }) => {
   return (
     <main>
-      <MovieLayout list={popularList} />
+      <Container>
+        <MovieLayout list={popularList} title="Popular Movies" />
+      </Container>
     </main>
   )
 }

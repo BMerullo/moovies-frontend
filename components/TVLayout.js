@@ -1,27 +1,26 @@
 import React from "react"
 import Card from "react-bootstrap/Card"
+import styles from "../styles/TVLayout.module.scss"
 
-import styles from "../styles/MovieLayout.module.scss"
-
-const MovieLayout = ({ list, title }) => {
+const TVLayout = ({ list, title }) => {
   return (
     <>
       <h1 className={styles.subtitle}>{title}</h1>
       <flex className={styles.flex}>
-        {list.results.map((movie, index) => {
+        {list.results.map((show, index) => {
           return (
             <article className={styles.card}>
-              <a className={styles.link} href={`/movie/${movie.id}`}>
+              <a className={styles.link} href={`/tv/${show.id}`}>
                 <Card style={{ width: "18rem" }} bg="dark" border="secondary">
                   <Card.Img
                     className="rounded"
-                    src={`http://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                    src={`http://image.tmdb.org/t/p/w500/${show.backdrop_path}`}
                   />
                   <Card.Body>
                     <div className={styles.text}>
-                      <Card.Title>{movie.title}</Card.Title>
+                      <Card.Title>{show.name}</Card.Title>
                       <Card.Text className="text-muted">
-                        {movie.overview}
+                        {show.overview}
                       </Card.Text>
                     </div>
                   </Card.Body>
@@ -35,4 +34,4 @@ const MovieLayout = ({ list, title }) => {
   )
 }
 
-export default MovieLayout
+export default TVLayout

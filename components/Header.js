@@ -79,12 +79,12 @@ const Header = () => {
                   <NavDropdown.Item href="/playing">
                     Now Playing
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/populartv">
+                  <NavDropdown.Item href="/popularTV">
                     Popular TV
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/catagories">
+                  {/* <NavDropdown.Item href="/catagories">
                     Catagories
-                  </NavDropdown.Item>
+                  </NavDropdown.Item> */}
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.4">
                     -User Home Page-

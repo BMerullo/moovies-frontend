@@ -3,7 +3,7 @@ import ProviderModal from "@/components/ProviderModal"
 import { Card, Container } from "react-bootstrap"
 import styles from "/styles/SinglePageTv.module.scss"
 
-const singleMovie = ({ show, providers }) => {
+const singleShow = ({ show, providers }) => {
   // const router = useRouter()
   // const { showId } = router.query
 
@@ -40,7 +40,7 @@ const singleMovie = ({ show, providers }) => {
   )
 }
 
-export default singleMovie
+export default singleShow
 
 export async function getServerSideProps(context) {
   console.log("SHOW", context.params.showId)

@@ -1,23 +1,24 @@
 import Col from "react-bootstrap/Col"
 import Card from "react-bootstrap/Card"
 import styles from "../styles/Sidescroll.module.scss"
+import Link from "next/link"
 
 const PopularSidescroll = ({ popularList }) => {
   return (
     <>
       <section className={styles.title}>
-        <a className={styles.link} href="/popular">
+        <Link className={styles.link} href="/popular">
           <h2 className={styles.subtitle}>Popular</h2>
-        </a>
-        <a href="/popular">
+        </Link>
+        <Link href="/popular">
           <h7 className={styles.subtitleLink}>See All</h7>
-        </a>
+        </Link>
       </section>
       <section className={styles.backgroundBox}>
         <article className={styles.rowContainer}>
           {popularList.results.map((movie, index) => {
             return (
-              <Col>
+              <Col key={index}>
                 <div className={styles.card}>
                   <a href={`movie/${movie.id}`}>
                     <Card style={{ width: "10rem" }}>

@@ -3,10 +3,7 @@ import { Card, Container, Button } from "react-bootstrap"
 import styles from "/styles/SinglePage.module.scss"
 import ProviderModal from "@/components/ProviderModal"
 
-const singleMovie = ({ movie, providers }) => {
-  console.log("These are the providers", providers)
-  console.log("Info for Single movie", movie)
-
+const SingleMovie = ({ movie, providers }) => {
   return (
     <main>
       <Container>
@@ -47,7 +44,7 @@ const singleMovie = ({ movie, providers }) => {
   )
 }
 
-export default singleMovie
+export default SingleMovie
 
 export async function getServerSideProps(context) {
   console.log("MOVIE", context.params.movieId)

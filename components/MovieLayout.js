@@ -10,7 +10,7 @@ const MovieLayout = ({ list, title }) => {
       <flex className={styles.flex}>
         {list.results.map((movie, index) => {
           return (
-            <article className={styles.card}>
+            <article key={index} className={styles.card}>
               <a className={styles.link} href={`/movie/${movie.id}`}>
                 <Card style={{ width: "18rem" }} bg="dark" border="secondary">
                   <Card.Img

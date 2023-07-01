@@ -105,7 +105,7 @@ const Header = () => {
                   result.media_type !== "person" && result.backdrop_path
               )
               .map((filter, index) => (
-                <a href={`/${filter.media_type}/${filter.id}`}>
+                <a key={index} href={`/${filter.media_type}/${filter.id}`}>
                   <ListGroup.Item key={index}>
                     <img
                       className="thumbnail"

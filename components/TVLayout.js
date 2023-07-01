@@ -9,7 +9,7 @@ const TVLayout = ({ list, title }) => {
       <flex className={styles.flex}>
         {list.results.map((show, index) => {
           return (
-            <article className={styles.card}>
+            <article className={styles.card} key={index}>
               <a className={styles.link} href={`/tv/${show.id}`}>
                 <Card style={{ width: "18rem" }} bg="dark" border="secondary">
                   <Card.Img

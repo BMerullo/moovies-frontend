@@ -1,6 +1,7 @@
 import Carousel from "react-bootstrap/Carousel"
 // import styles from "styles/NowPlayingCarousel"
 import styles from "../styles/NowPlayingCarousel.module.scss"
+import Link from "next/link"
 
 const NewReleaseCarousel = ({ playingList }) => {
   console.log("playingList", playingList)
@@ -8,16 +9,16 @@ const NewReleaseCarousel = ({ playingList }) => {
     <>
       <section className={styles.title}>
         <h2 className="subtitle">In Theatres</h2>
-        <a href="/playing">
+        <Link href="/playing">
           <h7 className={styles.subtitleLink}>See All</h7>
-        </a>
+        </Link>
       </section>
 
       <Carousel className={styles.carousel} interval={10000} controls={false}>
         {playingList.results.map((movie, index) => {
           return (
-            <Carousel.Item>
-              <a className={styles.theatersLink} href={`/movie/${movie.id}`}>
+            <Carousel.Item key={index}>
+              <Link className={styles.theatersLink} href={`/movie/${movie.id}`}>
                 <section className={styles.item}>
                   <article className={styles.caption}>
                     <h3>{movie.title}</h3>
@@ -29,7 +30,7 @@ const NewReleaseCarousel = ({ playingList }) => {
                     alt="movie image"
                   />
                 </section>
-              </a>
+              </Link>
             </Carousel.Item>
           )
         })}

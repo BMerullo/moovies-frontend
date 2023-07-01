@@ -1,11 +1,11 @@
 import ProviderModal from "@/components/ProviderModal"
-import { useRouter } from "next/router"
+// import { useRouter } from "next/router"
 import { Card, Container } from "react-bootstrap"
 import styles from "/styles/SinglePageTv.module.scss"
 
 const singleMovie = ({ show, providers }) => {
-  const router = useRouter()
-  const { showId } = router.query
+  // const router = useRouter()
+  // const { showId } = router.query
 
   console.log("Providers", providers)
   console.log("Info for Single show", show)

@@ -2,7 +2,8 @@ main {
   background: linear-gradient(rgb(49, 57, 65), #1a1919);
   color: white;
   display: flex;
-  padding-bottom: 100px;
+  padding-bottom: 80px;
+  /* padding-bottom: 100px; */
 }
 
 .title {
@@ -12,10 +13,6 @@ main {
 .subtitle {
   color: #0d6efd;
   margin: 20px 0px 10px 0px;
-}
-
-footer {
-  margin-top: 30px;
 }
 
 .home {

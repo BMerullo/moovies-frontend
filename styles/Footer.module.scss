@@ -1,0 +1,19 @@
+.footer {
+  background-color: black;
+  color: white;
+  padding: 20px 0px;
+}
+
+.published {
+  display: flex;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.source {
+  font-size: smaller;
+  padding: 0;
+}

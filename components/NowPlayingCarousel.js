@@ -1,5 +1,5 @@
 import Carousel from "react-bootstrap/Carousel"
-// import styles from "styles/NowPlayingCarousel"
+
 import styles from "../styles/NowPlayingCarousel.module.scss"
 import Link from "next/link"
 

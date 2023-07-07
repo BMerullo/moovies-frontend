@@ -13,9 +13,8 @@ const Footer = () => {
             </p>
           </article>
           <article>
-            <p className={styles.source}>* all movie data provided by TMDB </p>
+            <p className={styles.source}>* data provided by TMDB </p>
             <p className={styles.source}>
-              {" "}
               * all streaming data provided by JustWatch
             </p>
           </article>

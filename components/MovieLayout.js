@@ -21,6 +21,9 @@ const MovieLayout = ({ list, title }) => {
                     <div className={styles.text}>
                       <Card.Title>{movie.title}</Card.Title>
                       <Card.Text className="text-muted">
+                        Realease Date: {movie.release_date}
+                      </Card.Text>
+                      <Card.Text className="text-muted">
                         {movie.overview}
                       </Card.Text>
                     </div>

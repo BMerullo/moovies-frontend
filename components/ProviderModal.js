@@ -8,7 +8,6 @@ const ProviderModal = ({ providers }) => {
     providers.results.US.flatrate
   ) {
     return providers.results.US.flatrate.map((provider, index) => {
-      console.log(provider)
       return (
         <>
           <img

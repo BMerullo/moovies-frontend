@@ -4,7 +4,6 @@ import styles from "../styles/Sidescroll.module.scss"
 import Link from "next/link"
 
 const PopularShowSidescroll = ({ popularShowList }) => {
-  console.log(popularShowList, "This is the list of shows")
   return (
     <>
       <section className={styles.title}>

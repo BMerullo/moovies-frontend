@@ -4,11 +4,12 @@ import styles from "../styles/NowPlayingCarousel.module.scss"
 import Link from "next/link"
 
 const NewReleaseCarousel = ({ playingList }) => {
-  console.log("playingList", playingList)
   return (
     <>
       <section className={styles.title}>
-        <h2 className="subtitle">In Theatres</h2>
+        <Link className={styles.link} href="/playing">
+          <h2 className={styles.subtitle}>In Theatres</h2>
+        </Link>
         <Link href="/playing">
           <h7 className={styles.subtitleLink}>See All</h7>
         </Link>

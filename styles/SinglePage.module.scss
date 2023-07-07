@@ -22,6 +22,14 @@
   border-radius: 4px;
 }
 
+.genresContainer {
+  display: flex;
+}
+
+.genre {
+  padding: 0px 5px;
+}
+
 @media only screen and (min-width: 1200px) {
   .cardImg {
     position: relative;

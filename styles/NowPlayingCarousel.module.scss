@@ -30,11 +30,20 @@
   align-items: baseline;
 }
 
+.subtitle {
+  color: #0d6efd;
+  margin: 20px 0px 10px 0px;
+}
+
 .subtitleLink {
   color: #0d6efd;
   width: 100%;
   text-align: right;
   margin-right: 20px;
+}
+
+.link {
+  text-decoration: none;
 }
 
 @media only screen and (max-width: 1200px) {

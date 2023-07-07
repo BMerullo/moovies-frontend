@@ -22,7 +22,13 @@ const SingleMovie = ({ movie, providers }) => {
               <section className="mb-2 text-muted">
                 <p>{movie.overview}</p>
                 <p>Language: {movie.original_language}</p>
-                <p>Status: {movie.status} </p>
+                <p>Release Date: {movie.release_date} </p>
+                <div className={styles.genresContainer}>
+                  <p>Genres:</p>
+                  {movie.genres.map((genre, index) => {
+                    return <p className={styles.genre}>{genre.name}</p>
+                  })}
+                </div>
                 <a href={movie.homepage}>
                   <Button variant="primary">Webpage</Button>
                 </a>

@@ -27,9 +27,6 @@ const Header = () => {
       .then((res) => {
         setSearchResult(res.data.results)
       })
-
-    console.log("Results from search", searchResult)
-    console.log("Search Word", searchWord)
   }, [searchWord])
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -38,7 +35,6 @@ const Header = () => {
       router.push(`/${searchResult[0].media_type}/${searchResult[0].id}`)
       setSearchResult(false)
     } else {
-      // router.push("/error")
       null
     }
   }

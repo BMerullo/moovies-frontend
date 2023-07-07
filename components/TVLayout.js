@@ -20,6 +20,9 @@ const TVLayout = ({ list, title }) => {
                     <div className={styles.text}>
                       <Card.Title>{show.name}</Card.Title>
                       <Card.Text className="text-muted">
+                        Air Date: {show.first_air_date}
+                      </Card.Text>
+                      <Card.Text className="text-muted">
                         {show.overview}
                       </Card.Text>
                     </div>

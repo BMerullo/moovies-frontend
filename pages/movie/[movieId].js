@@ -26,7 +26,11 @@ const SingleMovie = ({ movie, providers }) => {
                 <div className={styles.genresContainer}>
                   <p>Genres:</p>
                   {movie.genres.map((genre, index) => {
-                    return <p className={styles.genre}>{genre.name}</p>
+                    return (
+                      <p key={index} className={styles.genre}>
+                        {genre.name}
+                      </p>
+                    )
                   })}
                 </div>
                 <a href={movie.homepage}>

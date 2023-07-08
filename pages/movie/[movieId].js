@@ -1,4 +1,3 @@
-import React, { useState } from "react"
 import { Card, Container, Button } from "react-bootstrap"
 import styles from "/styles/SinglePage.module.scss"
 import ProviderModal from "@/components/ProviderModal"
@@ -20,16 +19,16 @@ const SingleMovie = ({ movie, providers }) => {
                 <Card.Subtitle>{movie.tagline}</Card.Subtitle>
               </header>
               <section className="mb-2 text-muted">
-                <p>{movie.overview}</p>
-                <p>Language: {movie.original_language}</p>
-                <p>Release Date: {movie.release_date} </p>
+                <Card.Text>{movie.overview}</Card.Text>
+                <Card.Text>Language: {movie.original_language}</Card.Text>
+                <Card.Text>Release Date: {movie.release_date} </Card.Text>
                 <div className={styles.genresContainer}>
-                  <p>Genres:</p>
+                  <Card.Text>Genres:</Card.Text>
                   {movie.genres.map((genre, index) => {
                     return (
-                      <p key={index} className={styles.genre}>
+                      <Card.Text key={index} className={styles.genre}>
                         {genre.name}
-                      </p>
+                      </Card.Text>
                     )
                   })}
                 </div>

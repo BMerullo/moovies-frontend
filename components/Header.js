@@ -6,9 +6,7 @@ import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import NavDropdown from "react-bootstrap/NavDropdown"
 import Form from "react-bootstrap/Form"
-
 import ListGroup from "react-bootstrap/ListGroup"
-
 import axios from "axios"
 
 const Header = () => {
@@ -78,9 +76,7 @@ const Header = () => {
                   <NavDropdown.Item href="/popularTV">
                     Popular TV
                   </NavDropdown.Item>
-                  {/* <NavDropdown.Item href="/catagories">
-                    Catagories
-                  </NavDropdown.Item> */}
+
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.4">
                     -User Home Page-

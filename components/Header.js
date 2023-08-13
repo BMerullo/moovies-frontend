@@ -8,7 +8,7 @@ import NavDropdown from "react-bootstrap/NavDropdown"
 import Form from "react-bootstrap/Form"
 import ListGroup from "react-bootstrap/ListGroup"
 import axios from "axios"
-import LoginModal from "./loginModal"
+import LoginModal from "./LoginModal"
 
 const Header = () => {
   const [modalShow, setModalShow] = useState(false)

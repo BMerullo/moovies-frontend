@@ -8,8 +8,10 @@ import NavDropdown from "react-bootstrap/NavDropdown"
 import Form from "react-bootstrap/Form"
 import ListGroup from "react-bootstrap/ListGroup"
 import axios from "axios"
+import LoginModal from "./loginModal"
 
 const Header = () => {
+  const [modalShow, setModalShow] = useState(false)
   const [searchWord, setSearchWord] = useState("")
   const [searchResult, setSearchResult] = useState(false)
   const router = useRouter()
@@ -78,12 +80,15 @@ const Header = () => {
                   </NavDropdown.Item>
 
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    -User Home Page-
+                  <NavDropdown.Item
+                    variant="primary"
+                    onClick={() => setModalShow(true)}
+                  >
+                    Log In
                   </NavDropdown.Item>
                 </div>
               </NavDropdown>
-              <Nav.Link href="#deets">Hi Bob Merullo</Nav.Link>
+              <Nav.Link onClick={() => setModalShow(true)}>Log In</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -111,6 +116,7 @@ const Header = () => {
           </ListGroup>
         ) : null}
       </Container>
+      <LoginModal show={modalShow} onHide={() => setModalShow(false)} />
     </>
   )
 }

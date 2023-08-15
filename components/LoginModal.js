@@ -29,7 +29,7 @@ const LoginModal = (props) => {
                 <Form.Control
                   type="email"
                   placeholder="name@example.com"
-                  onChange={handleChange}
+                  // onChange={handleChange}
                 />
               </Form.Group>
               <Form.Group
@@ -40,7 +40,7 @@ const LoginModal = (props) => {
                 <Form.Control
                   type="password"
                   placeholder="password"
-                  onChange={handleChange}
+                  // onChange={handleChange}
                 />
                 <article className={styles.registerBtn}>
                   <Button>Login</Button>

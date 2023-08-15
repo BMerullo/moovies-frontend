@@ -78,7 +78,6 @@ const Header = () => {
                   <NavDropdown.Item href="/popularTV">
                     Popular TV
                   </NavDropdown.Item>
-
                   <NavDropdown.Divider />
                   <NavDropdown.Item
                     variant="primary"

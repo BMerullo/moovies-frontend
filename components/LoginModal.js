@@ -5,8 +5,9 @@ import styles from "../styles/LoginModal.module.scss"
 import Form from "react-bootstrap/Form"
 
 const LoginModal = (props) => {
-  const [register, setRegister] = useState(true)
-  if (register === true) {
+  console.log(props)
+  const [login, setLogin] = useState(true)
+  if (login === true) {
     return (
       <Modal
         {...props}
@@ -22,26 +23,34 @@ const LoginModal = (props) => {
             <Form>
               <Form.Group
                 className="mb-3"
-                controlId="exampleForm.ControlInput1"
+                // controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="name@example.com" />
+                <Form.Control
+                  type="email"
+                  placeholder="name@example.com"
+                  onChange={handleChange}
+                />
               </Form.Group>
               <Form.Group
                 className="mb-3"
-                controlId="exampleForm.ControlInput1"
+                // controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="password" />
+                <Form.Control
+                  type="password"
+                  placeholder="password"
+                  onChange={handleChange}
+                />
                 <article className={styles.registerBtn}>
-                  <Button>Register</Button>
+                  <Button>Login</Button>
                 </article>
                 <article className={styles.register}>
                   <p>
                     Not a Member?{" "}
                     <span
                       id={styles.registerLink}
-                      onClick={() => setRegister(false)}
+                      onClick={() => setLogin(false)}
                     >
                       Register Here
                     </span>
@@ -101,9 +110,13 @@ const LoginModal = (props) => {
               </Form.Group>
               <article className={styles.registerBtn}>
                 <Button>Register</Button>
+                <p id={styles.registerLink} onClick={() => setLogin(true)}>
+                  Back to Login
+                </p>
               </article>
             </Form>
           </Modal.Body>
+
           <Modal.Footer>
             <Button onClick={props.onHide}>X</Button>
           </Modal.Footer>

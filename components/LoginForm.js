@@ -1,11 +1,23 @@
 import React, { useState } from "react"
-import Modal from "react-bootstrap/Modal"
-import Button from "react-bootstrap/Button"
+import { Modal, Button, Form } from "react-bootstrap"
+// import Button from "react-bootstrap/Button"
 import styles from "../styles/LoginModal.module.scss"
-import Form from "react-bootstrap/Form"
+// import Form from "react-bootstrap/Form"
 
 const LoginForm = (props) => {
-  const { login, setLogin, ...rest } = props
+  const {
+    login,
+    setLogin,
+    password,
+    setPassword,
+    email,
+    setEmail,
+    handleChange,
+    errorMessage,
+    setErrorMessage,
+    userLogin,
+    ...rest
+  } = props
   return (
     <>
       <Modal
@@ -28,7 +40,7 @@ const LoginForm = (props) => {
                 <Form.Control
                   type="email"
                   placeholder="name@example.com"
-                  // onChange={handleChange}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Form.Group>
               <Form.Group
@@ -39,10 +51,10 @@ const LoginForm = (props) => {
                 <Form.Control
                   type="password"
                   placeholder="password"
-                  // onChange={handleChange}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <article className={styles.registerBtn}>
-                  <Button>Login</Button>
+                  <Button onClick={userLogin}>Login</Button>
                 </article>
                 <article className={styles.register}>
                   <p>

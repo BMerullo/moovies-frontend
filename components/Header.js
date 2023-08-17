@@ -64,7 +64,10 @@ const Header = () => {
               </Form>
             </Nav>
             <Nav>
-              <Nav.Link href="/" activeClass="home">
+              <Nav.Link
+                href="/"
+                //  activeClass="home"
+              >
                 Home
               </Nav.Link>
               <NavDropdown title="Menu" id="collasible-nav-dropdown">

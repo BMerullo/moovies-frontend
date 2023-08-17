@@ -1,127 +1,122 @@
 import React, { useState } from "react"
-import Modal from "react-bootstrap/Modal"
-import Button from "react-bootstrap/Button"
-import styles from "../styles/LoginModal.module.scss"
-import Form from "react-bootstrap/Form"
+import { useRouter } from "next/router"
+import axios from "axios"
+import LoginForm from "./LoginForm"
+import RegisterForm from "./RegisterForm"
 
 const LoginModal = (props) => {
-  console.log(props)
-  const [login, setLogin] = useState(true)
-  if (login === true) {
+  const router = useRouter()
+  const [login, setLogin] = useState("true")
+  const [confirmReg, setConfirmReg] = useState("")
+  const [errors, setErrors] = useState({})
+  const [errorMessage, setErrorMessage] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  })
+
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  const { onHide } = props
+
+  const register = (e) => {
+    e.preventDefault()
+
+    axios
+      .post("http://localhost:8000/api/user/register", user, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log("res.data", res.data)
+        setUser({
+          userName: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        })
+        localStorage.setItem("user", res.data.userId)
+        setConfirmReg("Succsessful! --->"),
+          setErrors({}),
+          console.log(errors, "errors")
+        // router.push("/")
+      })
+      .catch((err) => {
+        console.log(err, "This is the error")
+        setErrors(err.response.data.errors)
+        console.log(err.response.data.errors, "This")
+      })
+  }
+
+  const userLogin = (e) => {
+    e.preventDefault()
+    axios
+      .post(
+        "http://localhost:8000/api/user/login",
+        {
+          email: email,
+          password: password,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        localStorage.setItem("user", res.data.userId)
+        localStorage.setItem("username", res.data.userLoggedIn)
+        console.log(res, "res")
+        console.log(res.data, "is res data")
+        router.push(`/${res.data.userLoggedIn}`)
+        setEmail()
+        setPassword()
+        onHide()
+      })
+      .catch((err) => {
+        console.log(err.response.data)
+        setErrorMessage(err.response.data.message)
+      })
+  }
+
+  if (login === "true") {
     return (
-      <Modal
+      <LoginForm
         {...props}
-        size="sm"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <div className={styles.container}>
-          <Modal.Header>
-            <Modal.Title id="contained-modal-title-vcenter">Login</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group
-                className="mb-3"
-                // controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="name@example.com"
-                  // onChange={handleChange}
-                />
-              </Form.Group>
-              <Form.Group
-                className="mb-3"
-                // controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="password"
-                  // onChange={handleChange}
-                />
-                <article className={styles.registerBtn}>
-                  <Button>Login</Button>
-                </article>
-                <article className={styles.register}>
-                  <p>
-                    Not a Member?{" "}
-                    <span
-                      id={styles.registerLink}
-                      onClick={() => setLogin(false)}
-                    >
-                      Register Here
-                    </span>
-                  </p>
-                </article>
-              </Form.Group>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={props.onHide}>X</Button>
-          </Modal.Footer>
-        </div>
-      </Modal>
+        login={login}
+        setLogin={setLogin}
+        email={email}
+        setEmail={setEmail}
+        password={password}
+        setPassword={setPassword}
+        handleChange={handleChange}
+        errorMessage={errorMessage}
+        setErrorMessage={setErrorMessage}
+        user={user}
+        userLogin={userLogin}
+      />
     )
   } else {
     return (
-      <Modal
+      <RegisterForm
         {...props}
-        size="sm"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <div className={styles.container}>
-          <Modal.Header>
-            <Modal.Title id="contained-modal-title-vcenter">
-              Register
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="text" placeholder="name@example.com" />
-              </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>email</Form.Label>
-                <Form.Control type="email" placeholder="email" />
-                <Form.Group
-                  className="mb-3"
-                  controlId="exampleForm.ControlInput1"
-                ></Form.Group>
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="password" />
-              </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Confirm Password</Form.Label>
-                <Form.Control type="password" placeholder="confirm password" />
-              </Form.Group>
-              <article className={styles.registerBtn}>
-                <Button>Register</Button>
-                <p id={styles.registerLink} onClick={() => setLogin(true)}>
-                  Back to Login
-                </p>
-              </article>
-            </Form>
-          </Modal.Body>
-
-          <Modal.Footer>
-            <Button onClick={props.onHide}>X</Button>
-          </Modal.Footer>
-        </div>
-      </Modal>
+        login={login}
+        setLogin={setLogin}
+        confirmReg={confirmReg}
+        setConfirmReg={setConfirmReg}
+        errors={errors}
+        setErrors={setErrors}
+        user={user}
+        setUser={setUser}
+        handleChange={handleChange}
+        register={register}
+      />
     )
   }
 }

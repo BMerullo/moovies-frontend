@@ -11,7 +11,7 @@ const PopularShowSidescroll = ({ popularShowList }) => {
           <h2 className={styles.subtitle}>Popular Shows</h2>
         </Link>
         <Link href="/popularTV">
-          <h7 className={styles.subtitleLink}>See All</h7>
+          <h6 className={styles.subtitleLink}>See All</h6>
         </Link>
       </section>
       <div className={styles.backgroundBox}>

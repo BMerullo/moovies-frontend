@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useRouter } from "next/router"
-import Logout from "@/components/logout"
+import Logout from "@/components/Logout"
 
 const UserPage = () => {
   const router = useRouter()

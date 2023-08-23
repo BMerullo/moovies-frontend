@@ -57,6 +57,11 @@ const LoginForm = (props) => {
                   <Button onClick={userLogin}>Login</Button>
                 </article>
                 <article className={styles.register}>
+                  {errorMessage ? (
+                    <p className={styles.error}>{errorMessage}</p>
+                  ) : null}
+                </article>
+                <article className={styles.register}>
                   <p>
                     Not a Member?{" "}
                     <span

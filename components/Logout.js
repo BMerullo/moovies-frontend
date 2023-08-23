@@ -1,9 +1,9 @@
 import React from "react"
 import { useRouter } from "next/router"
 import axios from "axios"
-import Button from "react-bootstrap/Button"
+import NavDropdown from "react-bootstrap/NavDropdown"
 
-const Logout = () => {
+const Logout = ({ loggedIn, setLoggedIn }) => {
   const router = useRouter()
   const logout = (e) => {
     // e.preventDefault()
@@ -20,14 +20,14 @@ const Logout = () => {
         console.log(res.data)
         localStorage.removeItem("user")
         localStorage.removeItem("username")
-
+        setLoggedIn(!loggedIn)
         router.push("/")
       })
       .catch((err) => {
         console.log(err)
       })
   }
-  return <Button onClick={logout}>Logout</Button>
+  return <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
 }
 
 export default Logout

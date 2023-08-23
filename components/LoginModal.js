@@ -26,7 +26,7 @@ const LoginModal = (props) => {
     })
   }
 
-  const { onHide } = props
+  const { onHide, loggedIn, setLoggedIn } = props
 
   const register = (e) => {
     e.preventDefault()
@@ -43,6 +43,7 @@ const LoginModal = (props) => {
           password: "",
           confirmPassword: "",
         })
+
         localStorage.setItem("user", res.data.userId)
         setConfirmReg("Succsessful! --->"),
           setErrors({}),
@@ -78,6 +79,7 @@ const LoginModal = (props) => {
         setEmail()
         setPassword()
         onHide()
+        setLoggedIn(!loggedIn)
       })
       .catch((err) => {
         console.log(err.response.data)

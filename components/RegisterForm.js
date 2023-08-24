@@ -71,7 +71,7 @@ const RegisterForm = (props) => {
                 <Form.Control
                   name="email"
                   type="email"
-                  placeholder="example@email.com"
+                  placeholder="name@example.com"
                   onChange={handleChange}
                 />
                 <Form.Group

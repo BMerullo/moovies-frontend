@@ -5,6 +5,7 @@ import PopularSidescroll from "@/components/PopularSidescroll"
 import NowPlayingCarousel from "@/components/NowPlayingCarousel"
 import PopularShowSidescroll from "@/components/PopularShowSidescroll"
 import Logout from "@/components/Logout"
+import UserSection from "@/components/UserSection"
 
 const UserPage = ({ popularList, playingList, popularShowList }) => {
   const router = useRouter()
@@ -17,10 +18,7 @@ const UserPage = ({ popularList, playingList, popularShowList }) => {
     <>
       <main>
         <Container>
-          <p>
-            you are in the user page{" "}
-            <span style={{ color: "green" }}>{userName}</span>
-          </p>
+          <UserSection userName={userName} />
           <PopularSidescroll popularList={popularList} />
           <NowPlayingCarousel playingList={playingList} />
           <PopularShowSidescroll popularShowList={popularShowList} />

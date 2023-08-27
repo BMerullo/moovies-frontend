@@ -1,9 +1,17 @@
-.carousel {
+.main {
   background-color: #212529;
-  // border: black 2px solid;
+  border: 2px solid;
   padding: 20px 40px;
   border-radius: 1rem;
+  margin-top: 20px;
+  display: inline-block;
+  width: 100%;
   color: #999;
+}
+
+.userContent {
+  display: flex;
+  justify-content: space-around;
 }
 
 .caption {
@@ -22,7 +30,7 @@
 }
 
 .theatersLink {
-  color: #999;
+  color: white;
   text-decoration: none;
 }
 .title {

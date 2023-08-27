@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container"
 import PopularSidescroll from "@/components/PopularSidescroll"
 import NowPlayingCarousel from "@/components/NowPlayingCarousel"
 import PopularShowSidescroll from "@/components/PopularShowSidescroll"
-import Logout from "@/components/Logout"
+
 import UserSection from "@/components/UserSection"
 
 const UserPage = ({ popularList, playingList, popularShowList }) => {
@@ -22,7 +22,6 @@ const UserPage = ({ popularList, playingList, popularShowList }) => {
           <PopularSidescroll popularList={popularList} />
           <NowPlayingCarousel playingList={playingList} />
           <PopularShowSidescroll popularShowList={popularShowList} />
-          <Logout />
         </Container>
       </main>
     </>

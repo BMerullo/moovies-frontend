@@ -9,16 +9,25 @@ import Form from "react-bootstrap/Form"
 import ListGroup from "react-bootstrap/ListGroup"
 import axios from "axios"
 import LoginModal from "./LoginModal"
+import Logout from "./Logout"
 
-const Header = () => {
+const Header = (props) => {
   const [modalShow, setModalShow] = useState(false)
   const [searchWord, setSearchWord] = useState("")
   const [searchResult, setSearchResult] = useState(false)
+  const [user, setUser] = useState("")
+  const { loggedIn, setLoggedIn } = props
+
   const router = useRouter()
 
   const handleChange = (e) => {
     setSearchWord(e.target.value)
   }
+  useEffect(() => {
+    setUser(localStorage.getItem("username"))
+
+    console.log("This is the User", user)
+  }, [loggedIn])
   useEffect(() => {
     axios
       .get(
@@ -44,7 +53,11 @@ const Header = () => {
       <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
         <Container>
           <div className="title">
-            <Navbar.Brand href="/">MOOVIES</Navbar.Brand>
+            {user ? (
+              <Navbar.Brand href={`/${user}`}>MOOVIES</Navbar.Brand>
+            ) : (
+              <Navbar.Brand href="/">MOOVIES</Navbar.Brand>
+            )}
           </div>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -64,12 +77,22 @@ const Header = () => {
               </Form>
             </Nav>
             <Nav>
-              <Nav.Link
-                href="/"
-                //  activeClass="home"
-              >
-                Home
-              </Nav.Link>
+              {user ? (
+                <Nav.Link
+                  href={`/${user}`}
+                  //  activeClass="home"
+                >
+                  Home
+                </Nav.Link>
+              ) : (
+                <Nav.Link
+                  href="/"
+                  //  activeClass="home"
+                >
+                  Home
+                </Nav.Link>
+              )}
+
               <NavDropdown title="Menu" id="collasible-nav-dropdown">
                 <div className="nav-menu-container">
                   <NavDropdown.Item href="/popular">
@@ -82,15 +105,37 @@ const Header = () => {
                     Popular TV
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item
+                  {user === "" ? (
+                    <NavDropdown.Item
+                      variant="primary"
+                      onClick={() => setModalShow(true)}
+                    >
+                      Log In
+                    </NavDropdown.Item>
+                  ) : (
+                    <NavDropdown.Item
+                      variant="primary"
+                      onClick={() => setModalShow(true)}
+                    >
+                      {user}
+                    </NavDropdown.Item>
+                  )}
+                  {/* <NavDropdown.Item
                     variant="primary"
                     onClick={() => setModalShow(true)}
                   >
                     Log In
-                  </NavDropdown.Item>
+                  </NavDropdown.Item> */}
                 </div>
               </NavDropdown>
-              <Nav.Link onClick={() => setModalShow(true)}>Log In</Nav.Link>
+              {user ? (
+                <Nav.Link>
+                  <Logout loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+                </Nav.Link>
+              ) : (
+                <Nav.Link onClick={() => setModalShow(true)}>Log In</Nav.Link>
+              )}
+              {/* <Nav.Link onClick={() => setModalShow(true)}>Log In</Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -118,7 +163,12 @@ const Header = () => {
           </ListGroup>
         ) : null}
       </Container>
-      <LoginModal show={modalShow} onHide={() => setModalShow(false)} />
+      <LoginModal
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </>
   )
 }

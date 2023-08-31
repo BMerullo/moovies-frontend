@@ -13,7 +13,7 @@ const ProviderModal = ({ providers }) => {
           <img
             className={styles.providerLogo}
             key={index}
-            src={`http://image.tmdb.org/t/p/w500/${provider.logo_path}`}
+            src={`https://image.tmdb.org/t/p/w500/${provider.logo_path}`}
             alt={` logo`}
           />
         </>

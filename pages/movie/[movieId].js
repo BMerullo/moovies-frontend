@@ -10,7 +10,7 @@ const SingleMovie = ({ movie, providers }) => {
           <Card.Img
             className={styles.cardImg}
             variant="top"
-            src={`http://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
           />
           <Card.Body className={styles.cardBody}>
             <content className={styles.content}>
@@ -43,7 +43,7 @@ const SingleMovie = ({ movie, providers }) => {
             </content>
             <img
               className={styles.poster}
-              src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt="movie poster"
             />
           </Card.Body>

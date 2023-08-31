@@ -25,7 +25,7 @@ const PopularShowSidescroll = ({ popularShowList }) => {
                       <Card.Img
                         className="rounded "
                         variant="top"
-                        src={`http://image.tmdb.org/t/p/w500/${show.poster_path}`}
+                        src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
                       />
                     </Card>
                   </a>

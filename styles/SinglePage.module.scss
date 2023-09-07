@@ -1,6 +1,6 @@
 .card {
   background-color: black;
-  margin-top: 85px;
+  margin-top: 5px;
 }
 
 .cardHeader {
@@ -29,6 +29,16 @@
 
 .genre {
   padding: 0px 5px;
+}
+
+.btnContainer {
+  padding-top: 80px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  padding-left: 10px;
 }
 
 @media only screen and (min-width: 1200px) {

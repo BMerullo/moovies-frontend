@@ -1,29 +1,37 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styles from "../styles/UserSection.module.scss"
-import Link from "next/link"
 import Favorites from "./Favorites"
 import WatchList from "./WatchList"
+import axios from "axios"
 
 const UserSection = ({ userName }) => {
+  const [userId, setUserId] = useState("")
+  const [movieList, setMovieList] = useState([])
+
+  useEffect(() => {
+    setUserId(localStorage.getItem("userId"))
+
+    axios
+      .get(`http://localhost:8000/api/user/movie/${userId}`)
+      .then((res) => {
+        console.log(res.data)
+        setMovieList(res.data)
+        console.log(movieList)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
   return (
     <>
-      {/* <section className={styles.title}>
-        <Link className={styles.link} href="/playing">
-          <h2 className={styles.subtitle}>Moovies For {userName}</h2>
-        </Link>
-        <Link href="/playing">
-          <h6 className={styles.subtitleLink}>See All</h6>
-        </Link>
-      </section> */}
       <main className={styles.main}>
         <p>
           Welcome to your MOOVIES{" "}
           <span style={{ color: "#0d6efd" }}>{userName}</span>
         </p>
         <section className={styles.userContent}>
-          <Favorites />
-
-          <WatchList />
+          <Favorites movieList={movieList} />
+          <WatchList movieList={movieList} />
         </section>
       </main>
     </>
@@ -31,3 +39,18 @@ const UserSection = ({ userName }) => {
 }
 
 export default UserSection
+
+// export async function getServerSideProps() {
+//   const movieResponse = await fetch(
+//     `http://localhost:8000/api/user/movie/${localStorage.getItem("user")}`
+//   )
+//   const movieData = await movieResponse.json()
+//   console.log("List of user movies", movieData)
+//   return {
+//     props: {
+//       movieList: movieData,
+//     },
+//   }
+// }
+
+// ${localStorage.getItem("user")}

@@ -120,12 +120,6 @@ const Header = (props) => {
                       {user}
                     </NavDropdown.Item>
                   )}
-                  {/* <NavDropdown.Item
-                    variant="primary"
-                    onClick={() => setModalShow(true)}
-                  >
-                    Log In
-                  </NavDropdown.Item> */}
                 </div>
               </NavDropdown>
               {user ? (
@@ -135,7 +129,6 @@ const Header = (props) => {
               ) : (
                 <Nav.Link onClick={() => setModalShow(true)}>Log In</Nav.Link>
               )}
-              {/* <Nav.Link onClick={() => setModalShow(true)}>Log In</Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

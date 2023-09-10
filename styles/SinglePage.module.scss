@@ -1,6 +1,6 @@
 .card {
   background-color: black;
-  margin-top: 5px;
+  // margin-top: 5px;
 }
 
 .cardHeader {
@@ -33,12 +33,18 @@
 
 .btnContainer {
   padding-top: 80px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: flex-end;
 }
 
 .btn {
-  padding-left: 10px;
+  margin-left: 10px;
+  color: green;
+}
+
+.btn:hover {
+  background: red;
 }
 
 @media only screen and (min-width: 1200px) {

@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card"
 import styles from "../styles/MovieLayout.module.scss"
 
 const MovieLayout = ({ list, title }) => {
+  console.log("Movie Info", list)
   return (
     <>
       <h1 className={styles.subtitle}>{title}</h1>

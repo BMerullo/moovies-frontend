@@ -4,24 +4,27 @@ import Favorites from "./Favorites"
 import WatchList from "./WatchList"
 import axios from "axios"
 
-const UserSection = ({ userName }) => {
-  const [userId, setUserId] = useState("")
+const UserSection = ({ userName, userId }) => {
+  // const [userId, setUserId] = useState("")
   const [movieList, setMovieList] = useState([])
+  console.log("Hello", userId)
 
-  useEffect(() => {
-    setUserId(localStorage.getItem("userId"))
-
-    axios
-      .get(`http://localhost:8000/api/user/movie/${userId}`)
-      .then((res) => {
-        console.log(res.data)
-        setMovieList(res.data)
-        console.log(movieList)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
+  useEffect(
+    (e) => {
+      // setUserId(localStorage.getItem("user"))
+      axios
+        .get(`http://localhost:8000/api/user/movie/${userId}`)
+        .then((res) => {
+          console.log(res.data)
+          setMovieList(res.data)
+          console.log(movieList)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    [userId]
+  )
   return (
     <>
       <main className={styles.main}>

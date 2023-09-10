@@ -38,13 +38,29 @@
   justify-content: flex-end;
 }
 
-.btn {
+.btn1 {
   margin-left: 10px;
-  color: green;
+  background-color: transparent;
+  color: #0d6efd;
+  border-radius: 2rem;
+  border-collapse: collapse 2px;
 }
 
-.btn:hover {
-  background: red;
+.btn1:hover {
+  border: solid #0d6efd 1px;
+}
+
+.btn2 {
+  margin-left: 10px;
+  background-color: transparent;
+  color: rgb(219, 102, 121);
+  border-radius: 2rem;
+  border: hidden 2px;
+}
+
+.btn2:hover {
+  border: solid rgb(219, 102, 121) 1px;
+  fill: rgb(219, 102, 121);
 }
 
 @media only screen and (min-width: 1200px) {

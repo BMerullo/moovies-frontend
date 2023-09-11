@@ -26,7 +26,7 @@ const NewReleaseCarousel = ({ playingList }) => {
                   </article>
                   <img
                     className={styles.img}
-                    src={`http://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                    src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
                     alt="movie image"
                   />
                 </section>

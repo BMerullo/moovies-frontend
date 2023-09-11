@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card"
 import styles from "../styles/MovieLayout.module.scss"
 
 const MovieLayout = ({ list, title }) => {
+  console.log("Movie Info", list)
   return (
     <>
       <h1 className={styles.subtitle}>{title}</h1>
@@ -15,7 +16,7 @@ const MovieLayout = ({ list, title }) => {
                 <Card style={{ width: "18rem" }} bg="dark" border="secondary">
                   <Card.Img
                     className="rounded"
-                    src={`http://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                    src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
                   />
                   <Card.Body>
                     <div className={styles.text}>

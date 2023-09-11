@@ -1,6 +1,6 @@
 .card {
   background-color: black;
-  margin-top: 85px;
+  // margin-top: 5px;
 }
 
 .cardHeader {
@@ -29,6 +29,45 @@
 
 .genre {
   padding: 0px 5px;
+}
+
+.btnSection {
+  margin-top: 80px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btnContainer {
+  border: solid #999 1px;
+}
+
+.btn1 {
+  color: #0d6efd;
+  margin-right: 7px;
+}
+
+.btn1:hover {
+  cursor: pointer;
+}
+
+.star {
+  color: #0d6efd;
+  margin-right: 7px;
+}
+
+.btn2 {
+  color: rgb(219, 102, 121);
+  margin-right: 7px;
+}
+
+.btn2:hover {
+  cursor: pointer;
+}
+
+.heart {
+  color: rgb(219, 102, 121);
+  margin-right: 7px;
 }
 
 @media only screen and (min-width: 1200px) {

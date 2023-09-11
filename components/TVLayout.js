@@ -14,7 +14,7 @@ const TVLayout = ({ list, title }) => {
                 <Card style={{ width: "18rem" }} bg="dark" border="secondary">
                   <Card.Img
                     className="rounded"
-                    src={`http://image.tmdb.org/t/p/w500/${show.backdrop_path}`}
+                    src={`https://image.tmdb.org/t/p/w500/${show.backdrop_path}`}
                   />
                   <Card.Body>
                     <div className={styles.text}>

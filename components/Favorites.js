@@ -7,11 +7,11 @@ const Favorites = ({ movieList }) => {
       <div>
         {movieList
           .filter((favorite) => favorite.favorite === true)
-          .map((filter) => {
+          .map((filter, index) => {
             return (
-              <div>
+              <section key={index}>
                 <h4>{filter.title}</h4>
-              </div>
+              </section>
             )
           })}
       </div>

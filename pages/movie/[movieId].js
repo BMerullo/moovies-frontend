@@ -3,7 +3,7 @@ import { Card, Container, Button } from "react-bootstrap"
 import styles from "/styles/SinglePage.module.scss"
 import ProviderModal from "@/components/ProviderModal"
 import axios from "axios"
-import { RSC_MODULE_TYPES } from "next/dist/shared/lib/constants"
+// import { RSC_MODULE_TYPES } from "next/dist/shared/lib/constants"
 
 const SingleMovie = ({ movie, providers }) => {
   console.log(movie)
@@ -28,6 +28,8 @@ const SingleMovie = ({ movie, providers }) => {
       }
     })
   })
+
+  const submitWatchList = (e) => {}
 
   return (
     <main>

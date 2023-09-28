@@ -4,32 +4,67 @@ import styles from "/styles/SinglePage.module.scss"
 import ProviderModal from "@/components/ProviderModal"
 import axios from "axios"
 // import { RSC_MODULE_TYPES } from "next/dist/shared/lib/constants"
-
 const SingleMovie = ({ movie, providers }) => {
-  console.log(movie)
-  const [watchList, setWatchList] = useState()
-  const [favorite, setFavorite] = useState()
+  // console.log(movie)
+
+  const [movieId, setMovieId] = useState("")
+  const [title, setTitle] = useState("")
+  const [image, setImage] = useState("")
+  const [rating, setRating] = useState("")
+  const [comment, setComment] = useState("")
+  const [favorite, setFavorite] = useState("")
+  const [watchList, setWatchList] = useState("")
   const [userId, setUserId] = useState("")
   const [dataBaseId, setDataBaseId] = useState("")
+  const [movieData, setMovieData] = useState(false)
 
-  console.log(watchList, favorite)
-
+  console.log(watchList, "This is the watchList")
   useEffect(() => {
     axios.get(`http://localhost:8000/api/movie/${movie.id}`).then((res) => {
-      console.log(res.data)
       if (res.data) {
+        setMovieId(movie.id)
+        setTitle(movie.title)
+        setImage(movie.poster_path)
         setWatchList(res.data.watchList)
         setFavorite(res.data.favorite)
         setUserId(localStorage.getItem("user"))
         setDataBaseId(res.data.createdBy)
+        setMovieData(true)
       } else {
         setWatchList(false)
         setFavorite(false)
       }
     })
-  })
+  }, [])
 
-  const submitWatchList = (e) => {}
+  const addWatchList = (e) => {
+    // e.preventDefault()
+    if (movieData === true) {
+      setWatchList(true)
+      axios
+        .post(
+          `http://localhost:8000/api/movie/`,
+          {
+            movieId,
+            title,
+            image,
+            rating,
+            comment,
+            watchList,
+            favorite,
+          },
+          { withCredentials: true }
+        )
+        .then((res) => {
+          console.log(res.data)
+        })
+        .catch((err) => {
+          console.log("!!!", err)
+        })
+    } else {
+      setWatchList(true)
+    }
+  }
 
   return (
     <main>
@@ -49,7 +84,7 @@ const SingleMovie = ({ movie, providers }) => {
               </svg>
             </div>
           ) : (
-            <div className={styles.btn1}>
+            <div className={styles.btn1} onClick={addWatchList}>
               <span className={styles.btnText}>Add to Watchlist</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -67,8 +102,8 @@ const SingleMovie = ({ movie, providers }) => {
             <div className={styles.heart}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
+                width="24"
+                height="24"
                 fill="currentColor"
                 className="bi bi-heart-fill"
                 viewBox="0 0 22 20"
@@ -84,8 +119,8 @@ const SingleMovie = ({ movie, providers }) => {
               <span className={styles.btnText}>Add to Favorites</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
+                width="24"
+                height="24"
                 fill="currentColor"
                 className="bi bi-heart"
                 viewBox="0 0 22 20"

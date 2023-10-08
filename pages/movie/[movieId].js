@@ -3,10 +3,8 @@ import { Card, Container, Button } from "react-bootstrap"
 import styles from "/styles/SinglePage.module.scss"
 import ProviderModal from "@/components/ProviderModal"
 import axios from "axios"
-// import { RSC_MODULE_TYPES } from "next/dist/shared/lib/constants"
-const SingleMovie = ({ movie, providers }) => {
-  // console.log(movie)
 
+const SingleMovie = ({ movie, providers }) => {
   const [movieId, setMovieId] = useState("")
   const [title, setTitle] = useState("")
   const [image, setImage] = useState("")
@@ -18,7 +16,6 @@ const SingleMovie = ({ movie, providers }) => {
   const [dataBaseId, setDataBaseId] = useState("")
   const [movieData, setMovieData] = useState(false)
 
-  console.log(watchList, "This is the watchList")
   useEffect(() => {
     axios.get(`http://localhost:8000/api/movie/${movie.id}`).then((res) => {
       if (res.data) {
@@ -38,8 +35,8 @@ const SingleMovie = ({ movie, providers }) => {
   }, [])
 
   const addWatchList = (e) => {
-    // e.preventDefault()
-    if (movieData === true) {
+    e.preventDefault()
+    if (movieData === false) {
       setWatchList(true)
       axios
         .post(
@@ -56,6 +53,7 @@ const SingleMovie = ({ movie, providers }) => {
           { withCredentials: true }
         )
         .then((res) => {
+          console.log(res)
           console.log(res.data)
         })
         .catch((err) => {

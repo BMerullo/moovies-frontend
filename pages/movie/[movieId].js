@@ -8,51 +8,52 @@ const SingleMovie = ({ movie, providers }) => {
   const [movieId, setMovieId] = useState("")
   const [title, setTitle] = useState("")
   const [image, setImage] = useState("")
-  const [rating, setRating] = useState("")
-  const [comment, setComment] = useState("")
-  const [favorite, setFavorite] = useState("")
-  const [watchList, setWatchList] = useState("")
+  // const [rating, setRating] = useState("")
+  // const [comment, setComment] = useState("")
+  const [favorite, setFavorite] = useState("false")
+  const [watchList, setWatchList] = useState("false")
   const [userId, setUserId] = useState("")
-  const [dataBaseId, setDataBaseId] = useState("")
+  const [dataBaseUserId, setDataBaseUserId] = useState("")
   const [movieData, setMovieData] = useState(false)
+  const [refresh, setRefresh] = useState(false)
 
   useEffect(() => {
     axios.get(`http://localhost:8000/api/movie/${movie.id}`).then((res) => {
       if (res.data) {
+        console.log(res.data)
         setMovieId(movie.id)
         setTitle(movie.title)
         setImage(movie.poster_path)
         setWatchList(res.data.watchList)
         setFavorite(res.data.favorite)
+
         setUserId(localStorage.getItem("user"))
-        setDataBaseId(res.data.createdBy)
+        setDataBaseUserId(res.data.createdBy)
         setMovieData(true)
       } else {
         setWatchList(false)
         setFavorite(false)
       }
     })
-  }, [])
+  }, [refresh])
 
   const addWatchList = (e) => {
     e.preventDefault()
     if (movieData === false) {
-      setWatchList(true)
       axios
         .post(
           `http://localhost:8000/api/movie/`,
           {
-            movieId,
-            title,
-            image,
-            rating,
-            comment,
-            watchList,
+            movieId: movie.id,
+            title: movie.title,
+            image: movie.poster_path,
+            watchList: true,
             favorite,
           },
           { withCredentials: true }
         )
         .then((res) => {
+          setRefresh(!refresh)
           console.log(res)
           console.log(res.data)
         })
@@ -60,7 +61,36 @@ const SingleMovie = ({ movie, providers }) => {
           console.log("!!!", err)
         })
     } else {
-      setWatchList(true)
+      axios.put(`http://localhost:8000/api/movie/${movie.id},{
+      
+      }`)
+    }
+  }
+  const addFavorite = (e) => {
+    e.preventDefault()
+    if (movieData === false) {
+      axios
+        .post(
+          `http://localhost:8000/api/movie/`,
+          {
+            movieId: movie.id,
+            title: movie.title,
+            image: movie.poster_path,
+            watchList,
+            favorite: true,
+          },
+          { withCredentials: true }
+        )
+        .then((res) => {
+          setRefresh(!refresh)
+          console.log(res)
+          console.log(res.data)
+        })
+        .catch((err) => {
+          console.log("!!!", err)
+        })
+    } else {
+      setFavorite(true)
     }
   }
 
@@ -68,7 +98,7 @@ const SingleMovie = ({ movie, providers }) => {
     <main>
       <Container>
         <section className={styles.btnSection}>
-          {watchList === true && dataBaseId === userId ? (
+          {watchList === true && dataBaseUserId === userId ? (
             <div className={styles.star}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +126,7 @@ const SingleMovie = ({ movie, providers }) => {
               </svg>
             </div>
           )}
-          {favorite === true && dataBaseId === userId ? (
+          {favorite === true && dataBaseUserId === userId ? (
             <div className={styles.heart}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +143,7 @@ const SingleMovie = ({ movie, providers }) => {
               </svg>
             </div>
           ) : (
-            <div className={styles.btn2}>
+            <div className={styles.btn2} onClick={addFavorite}>
               <span className={styles.btnText}>Add to Favorites</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

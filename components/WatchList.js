@@ -1,7 +1,6 @@
 import React from "react"
 
 const WatchList = ({ movieList }) => {
-  console.log("This is the movielist", movieList)
   return (
     <div>
       <h1>Watch List</h1>

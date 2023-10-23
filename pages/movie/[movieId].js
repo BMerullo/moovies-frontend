@@ -5,94 +5,13 @@ import ProviderModal from "@/components/ProviderModal"
 import axios from "axios"
 
 const SingleMovie = ({ movie, providers }) => {
+  const [userId, setUserId] = useState("")
+  const [dataBaseUserId, setDataBaseUserId] = useState("")
   const [movieId, setMovieId] = useState("")
   const [title, setTitle] = useState("")
   const [image, setImage] = useState("")
-  // const [rating, setRating] = useState("")
-  // const [comment, setComment] = useState("")
-  const [favorite, setFavorite] = useState("false")
-  const [watchList, setWatchList] = useState("false")
-  const [userId, setUserId] = useState("")
-  const [dataBaseUserId, setDataBaseUserId] = useState("")
-  const [movieData, setMovieData] = useState(false)
-  const [refresh, setRefresh] = useState(false)
-
-  useEffect(() => {
-    axios.get(`http://localhost:8000/api/movie/${movie.id}`).then((res) => {
-      if (res.data) {
-        console.log(res.data)
-        setMovieId(movie.id)
-        setTitle(movie.title)
-        setImage(movie.poster_path)
-        setWatchList(res.data.watchList)
-        setFavorite(res.data.favorite)
-
-        setUserId(localStorage.getItem("user"))
-        setDataBaseUserId(res.data.createdBy)
-        setMovieData(true)
-      } else {
-        setWatchList(false)
-        setFavorite(false)
-      }
-    })
-  }, [refresh])
-
-  const addWatchList = (e) => {
-    e.preventDefault()
-    if (movieData === false) {
-      axios
-        .post(
-          `http://localhost:8000/api/movie/`,
-          {
-            movieId: movie.id,
-            title: movie.title,
-            image: movie.poster_path,
-            watchList: true,
-            favorite,
-          },
-          { withCredentials: true }
-        )
-        .then((res) => {
-          setRefresh(!refresh)
-          console.log(res)
-          console.log(res.data)
-        })
-        .catch((err) => {
-          console.log("!!!", err)
-        })
-    } else {
-      axios.put(`http://localhost:8000/api/movie/${movie.id},{
-      
-      }`)
-    }
-  }
-  const addFavorite = (e) => {
-    e.preventDefault()
-    if (movieData === false) {
-      axios
-        .post(
-          `http://localhost:8000/api/movie/`,
-          {
-            movieId: movie.id,
-            title: movie.title,
-            image: movie.poster_path,
-            watchList,
-            favorite: true,
-          },
-          { withCredentials: true }
-        )
-        .then((res) => {
-          setRefresh(!refresh)
-          console.log(res)
-          console.log(res.data)
-        })
-        .catch((err) => {
-          console.log("!!!", err)
-        })
-    } else {
-      setFavorite(true)
-    }
-  }
+  const [favorite, setFavorite] = useState("")
+  const [watchList, setWatchList] = useState("")
 
   return (
     <main>
@@ -112,7 +31,7 @@ const SingleMovie = ({ movie, providers }) => {
               </svg>
             </div>
           ) : (
-            <div className={styles.btn1} onClick={addWatchList}>
+            <div className={styles.btn1}>
               <span className={styles.btnText}>Add to Watchlist</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +62,7 @@ const SingleMovie = ({ movie, providers }) => {
               </svg>
             </div>
           ) : (
-            <div className={styles.btn2} onClick={addFavorite}>
+            <div className={styles.btn2}>
               <span className={styles.btnText}>Add to Favorites</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -208,9 +127,7 @@ const SingleMovie = ({ movie, providers }) => {
 
 export default SingleMovie
 
-export async function getServerSideProps(context) {
-  console.log("MOVIE", context.params.movieId)
-
+export async function getServerSideProps(context, localStorage) {
   const movieResponse = await fetch(
     `https://api.themoviedb.org/3/movie/${context.params.movieId}?api_key=1d1f8fe4a0523780c901154040d7aa0c&language=en-US`
   )

@@ -7,17 +7,14 @@ import axios from "axios"
 const UserSection = ({ userName, userId }) => {
   // const [userId, setUserId] = useState("")
   const [movieList, setMovieList] = useState([])
-  console.log("Hello", userId)
 
   useEffect(
     (e) => {
-      // setUserId(localStorage.getItem("user"))
       axios
         .get(`http://localhost:8000/api/user/movie/${userId}`)
         .then((res) => {
           console.log(res.data)
           setMovieList(res.data)
-          console.log(movieList)
         })
         .catch((err) => {
           console.log(err)

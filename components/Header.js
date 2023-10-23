@@ -25,8 +25,6 @@ const Header = (props) => {
   }
   useEffect(() => {
     setUser(localStorage.getItem("username"))
-
-    console.log("This is the User", user)
   }, [loggedIn])
   useEffect(() => {
     axios

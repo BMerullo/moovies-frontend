@@ -5,7 +5,6 @@ import WatchList from "./WatchList"
 import axios from "axios"
 
 const UserSection = ({ userName, userId }) => {
-  // const [userId, setUserId] = useState("")
   const [movieList, setMovieList] = useState([])
 
   useEffect(
@@ -17,7 +16,7 @@ const UserSection = ({ userName, userId }) => {
           setMovieList(res.data)
         })
         .catch((err) => {
-          console.log(err)
+          console.log(err, "This is the error")
         })
     },
     [userId]

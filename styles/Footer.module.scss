@@ -1,6 +1,5 @@
 .footer {
   background-color: black;
-  color: white;
   padding: 20px 0px;
 }
 
@@ -11,6 +10,7 @@
 .footerContent {
   display: flex;
   justify-content: space-between;
+  color: white;
 }
 
 .source {

@@ -2,22 +2,52 @@ import React, { useState, useEffect } from "react"
 import { Card, Container, Button } from "react-bootstrap"
 import styles from "/styles/SinglePage.module.scss"
 import ProviderModal from "@/components/ProviderModal"
+import { useRouter } from "next/router"
 import axios from "axios"
 
 const SingleMovie = ({ movie, providers }) => {
-  const [userId, setUserId] = useState("")
   const [dataBaseUserId, setDataBaseUserId] = useState("")
-  const [movieId, setMovieId] = useState("")
+  const [userId, setUserId] = useState("")
   const [title, setTitle] = useState("")
   const [image, setImage] = useState("")
-  const [favorite, setFavorite] = useState("")
-  const [watchList, setWatchList] = useState("")
+  const [favorite, setFavorite] = useState(false)
+  const [watchList, setWatchList] = useState(false)
+  const [movieId, setMovieId] = useState("")
+
+  const router = useRouter()
+
+  useEffect(() => {
+    setUserId(localStorage.getItem("user"))
+    setMovieId(router.query)
+  }, [])
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/movie/${movieId}/${userId}`)
+      .then((res) => {
+        console.log(res.data, "<---- res.data")
+        if (res.data) {
+          setWatchList(res.data.watchList)
+          setFavorite(res.data.favorite)
+          setDataBaseUserId(res.data.createdBy)
+        } else {
+          setWatchList(false)
+          setFavorite(false)
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
+  console.log(movieId)
+  console.log(watchList, "watchList")
+  // console.log(dataBaseUserId, "<--DbId")
+  console.log(userId, "<------UserId")
 
   return (
     <main>
       <Container>
         <section className={styles.btnSection}>
-          {watchList === true && dataBaseUserId === userId ? (
+          {watchList === true && userId ? (
             <div className={styles.star}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +157,7 @@ const SingleMovie = ({ movie, providers }) => {
 
 export default SingleMovie
 
-export async function getServerSideProps(context, localStorage) {
+export async function getServerSideProps(context) {
   const movieResponse = await fetch(
     `https://api.themoviedb.org/3/movie/${context.params.movieId}?api_key=1d1f8fe4a0523780c901154040d7aa0c&language=en-US`
   )

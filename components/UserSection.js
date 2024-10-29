@@ -5,15 +5,29 @@ import WatchList from "./WatchList"
 import axios from "axios"
 
 const UserSection = ({ userName, userId }) => {
-  const [movieList, setMovieList] = useState([])
+  const [favoriteList, setFavoriteList] = useState([])
+  const [watchList, setWatchList] = useState([])
 
   useEffect(
     (e) => {
       axios
-        .get(`http://localhost:8000/api/user/movie/${userId}`)
+        .get(`http://localhost:8000/api/user/favorite/${userId}`)
         .then((res) => {
-          console.log(res.data)
-          setMovieList(res.data)
+          {
+            res.data ? (console.log(res.data), setFavoriteList(res.data)) : null
+          }
+        })
+        .catch((err) => {
+          console.log(err, "This is the error")
+        })
+    },
+    (e) => {
+      axios
+        .get(`http://localhost:8000/api/user/watchList/${userId}`)
+        .then((res) => {
+          {
+            res.data ? (console.log(res.data), setWatchList(res.data)) : null
+          }
         })
         .catch((err) => {
           console.log(err, "This is the error")
@@ -29,8 +43,8 @@ const UserSection = ({ userName, userId }) => {
           <span style={{ color: "#0d6efd" }}>{userName}</span>
         </p>
         <section className={styles.userContent}>
-          <Favorites movieList={movieList} />
-          <WatchList movieList={movieList} />
+          <Favorites favoriteList={favoriteList} />
+          <WatchList watchList={watchList} />
         </section>
       </main>
     </>

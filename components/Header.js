@@ -25,6 +25,8 @@ const Header = (props) => {
   }
   useEffect(() => {
     setUser(localStorage.getItem("username"))
+    // user ? loggedIn === true : loggedIn === false
+    user === null ? setLoggedIn(false) : setLoggedIn(true)
   }, [loggedIn])
   useEffect(() => {
     axios

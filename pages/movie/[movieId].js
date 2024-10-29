@@ -7,41 +7,38 @@ import axios from "axios"
 
 const SingleMovie = ({ movie, providers }) => {
   const [dataBaseUserId, setDataBaseUserId] = useState("")
-  const [userId, setUserId] = useState("")
-  const [title, setTitle] = useState("")
-  const [image, setImage] = useState("")
+  const [MovieData, setMovieData] = useState({
+    movieId: "",
+    title: "",
+    image: "",
+  })
   const [favorite, setFavorite] = useState(false)
   const [watchList, setWatchList] = useState(false)
-  const [movieId, setMovieId] = useState("")
 
   const router = useRouter()
 
-  useEffect(() => {
-    setUserId(localStorage.getItem("user"))
-    setMovieId(router.query)
-  }, [])
-  useEffect(() => {
+  // useEffect(() => {
+  //   setUserId(localStorage.getItem("user"))
+  //   setMovieId(router.query)
+  // }, [])
+
+  const submitFavorite = (e) => {
+    // e.preventDefault()
+
+    const selectedData = {
+      movieId: movie.id,
+      title: movie.title,
+      image: movie.poster_path,
+    }
+
     axios
-      .get(`http://localhost:8000/api/movie/${movieId}/${userId}`)
+      .post("http://localhost:8000/api/favorite", selectedData, {
+        withCredentials: true,
+      })
       .then((res) => {
-        console.log(res.data, "<---- res.data")
-        if (res.data) {
-          setWatchList(res.data.watchList)
-          setFavorite(res.data.favorite)
-          setDataBaseUserId(res.data.createdBy)
-        } else {
-          setWatchList(false)
-          setFavorite(false)
-        }
+        console.log("res.data", res.data)
       })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
-  console.log(movieId)
-  console.log(watchList, "watchList")
-  // console.log(dataBaseUserId, "<--DbId")
-  console.log(userId, "<------UserId")
+  }
 
   return (
     <main>
@@ -101,6 +98,7 @@ const SingleMovie = ({ movie, providers }) => {
                 fill="currentColor"
                 className="bi bi-heart"
                 viewBox="0 0 22 20"
+                onClick={submitFavorite}
               >
                 <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
               </svg>

@@ -1,10 +1,10 @@
 import React from "react"
 
-const WatchList = ({ movieList }) => {
+const WatchList = ({ watchList }) => {
   return (
     <div>
       <h1>Watch List</h1>
-      {movieList
+      {watchList
         .filter((watch) => watch.watchList === true)
         .map((filter, index) => {
           return (

@@ -4,15 +4,13 @@ const WatchList = ({ watchList }) => {
   return (
     <div>
       <h1>Watch List</h1>
-      {watchList
-        .filter((watch) => watch.watchList === true)
-        .map((filter, index) => {
-          return (
-            <div key={index}>
-              <h4>{filter.title}</h4>
-            </div>
-          )
-        })}
+      {watchList.map((movie, index) => {
+        return (
+          <section key={index}>
+            <h4>{movie.title}</h4>
+          </section>
+        )
+      })}
     </div>
   )
 }

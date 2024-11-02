@@ -4,17 +4,14 @@ const Favorites = ({ favoriteList }) => {
   return (
     <div>
       <h1>Favorites</h1>
-      <div>
-        {favoriteList
-          .filter((favorite) => favorite.favorite === true)
-          .map((filter, index) => {
-            return (
-              <section key={index}>
-                <h4>{filter.title}</h4>
-              </section>
-            )
-          })}
-      </div>
+
+      {favoriteList.map((movie, index) => {
+        return (
+          <section key={index}>
+            <h4>{movie.title}</h4>
+          </section>
+        )
+      })}
     </div>
   )
 }

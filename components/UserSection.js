@@ -11,7 +11,7 @@ const UserSection = ({ userName, userId }) => {
   useEffect(
     (e) => {
       axios
-        .get(`http://localhost:8000/api/user/favorite/${userId}`)
+        .get(`http://localhost:8000/api/user/favorite/${localStorage.user}`)
         .then((res) => {
           {
             res.data ? (console.log(res.data), setFavoriteList(res.data)) : null
@@ -21,20 +21,21 @@ const UserSection = ({ userName, userId }) => {
           console.log(err, "This is the error")
         })
     },
-    (e) => {
-      axios
-        .get(`http://localhost:8000/api/user/watchList/${userId}`)
-        .then((res) => {
-          {
-            res.data ? (console.log(res.data), setWatchList(res.data)) : null
-          }
-        })
-        .catch((err) => {
-          console.log(err, "This is the error")
-        })
-    },
-    [userId]
+
+    []
   )
+  useEffect((e) => {
+    axios
+      .get(`http://localhost:8000/api/user/watchList/${localStorage.user}`)
+      .then((res) => {
+        {
+          res.data ? (console.log(res.data), setWatchList(res.data)) : null
+        }
+      })
+      .catch((err) => {
+        console.log(err, "This is the error")
+      })
+  }, [])
   return (
     <>
       <main className={styles.main}>

@@ -1,6 +1,6 @@
 .card {
   background-color: black;
-  margin-top: 85px;
+  // margin-top: 85px;
 }
 
 .cardHeader {
@@ -31,9 +31,84 @@
   padding: 0px 5px;
 }
 
+.btnSection {
+  margin-top: 80px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .btnContainer {
   display: inline-flex;
   justify-content: flex-end;
+}
+
+.btn1 {
+  color: #0d6efd;
+  margin-right: 7px;
+  position: relative;
+}
+
+.btn1:hover {
+  cursor: pointer;
+}
+
+.star {
+  color: #0d6efd;
+  margin-right: 7px;
+}
+
+.btn2 {
+  position: relative;
+  color: rgb(219, 102, 121);
+  margin-right: 7px;
+}
+
+.btn2:hover {
+  cursor: pointer;
+}
+
+.heart {
+  color: rgb(219, 102, 121);
+  margin-right: 7px;
+}
+
+.btn1 .btnText {
+  visibility: hidden;
+  width: 100px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  margin-left: -60px;
+  z-index: 1;
+}
+
+.btn1:hover .btnText {
+  visibility: visible;
+}
+
+.btn2 .btnText {
+  visibility: hidden;
+  width: 100px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  margin-left: -60px;
+  z-index: 1;
+}
+
+.btn2:hover .btnText {
+  visibility: visible;
 }
 
 @media only screen and (min-width: 1200px) {

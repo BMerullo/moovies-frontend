@@ -20,7 +20,7 @@ const PopularShowSidescroll = ({ popularShowList }) => {
             return (
               <Col key={index}>
                 <div className={styles.card}>
-                  <a href={`tv/${show.id}`}>
+                  <Link href={`tv/${show.id}`}>
                     <Card style={{ width: "10rem" }}>
                       <Card.Img
                         className="rounded "
@@ -28,7 +28,7 @@ const PopularShowSidescroll = ({ popularShowList }) => {
                         src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
                       />
                     </Card>
-                  </a>
+                  </Link>
                 </div>
               </Col>
             )

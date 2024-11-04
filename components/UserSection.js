@@ -3,6 +3,8 @@ import styles from "../styles/UserSection.module.scss"
 import Favorites from "./Favorites"
 import WatchList from "./WatchList"
 import axios from "axios"
+import ShowFavorites from "./ShowFavorites"
+import ShowWatchList from "./showWatchList"
 
 const UserSection = ({ userName, userId }) => {
   const [favoriteList, setFavoriteList] = useState([])
@@ -46,6 +48,10 @@ const UserSection = ({ userName, userId }) => {
         <section className={styles.userContent}>
           <Favorites favoriteList={favoriteList} />
           <WatchList watchList={watchList} />
+        </section>
+        <section className={styles.userContent}>
+          <ShowFavorites />
+          <ShowWatchList />
         </section>
       </main>
     </>

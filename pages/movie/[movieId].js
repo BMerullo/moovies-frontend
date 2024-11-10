@@ -34,7 +34,7 @@ const SingleMovie = ({ movie, providers }) => {
       .then((res) => {
         console.log(res.data)
         if (res.data) setWatchList(true)
-        else setFavorite(false)
+        else setWatchList(false)
       })
       .catch((err) => {
         console.log(err)

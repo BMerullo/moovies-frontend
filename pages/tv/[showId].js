@@ -12,7 +12,7 @@ const SingleShow = ({ show, providers }) => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8000/api/user/${localStorage.user}/favorite/${show.id}`
+        `http://localhost:8000/api/user/${localStorage.user}/showFavorite/${show.id}`
       )
       .then((res) => {
         console.log(res.data)
@@ -27,12 +27,12 @@ const SingleShow = ({ show, providers }) => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8000/api/user/${localStorage.user}/watchList/${show.id}`
+        `http://localhost:8000/api/user/${localStorage.user}/showWatchList/${show.id}`
       )
       .then((res) => {
         console.log(res.data)
         if (res.data) setWatchList(true)
-        else setFavorite(false)
+        else setWatchList(false)
       })
       .catch((err) => {
         console.log(err)
@@ -41,13 +41,13 @@ const SingleShow = ({ show, providers }) => {
 
   const submitFavorite = (e) => {
     const selectedData = {
-      movieId: show.id,
-      title: show.title,
+      showId: show.id,
+      name: show.name,
       image: show.poster_path,
     }
 
     axios
-      .post("http://localhost:8000/api/favorite", selectedData, {
+      .post("http://localhost:8000/api/showFavorite", selectedData, {
         withCredentials: true,
       })
       .then((res) => {
@@ -58,13 +58,13 @@ const SingleShow = ({ show, providers }) => {
 
   const submitWatchList = (e) => {
     const selectedData = {
-      movieId: show.id,
-      title: show.title,
+      showId: show.id,
+      name: show.name,
       image: show.poster_path,
     }
 
     axios
-      .post("http://localhost:8000/api/watchList", selectedData, {
+      .post("http://localhost:8000/api/showWatchList", selectedData, {
         withCredentials: true,
       })
       .then((res) => {

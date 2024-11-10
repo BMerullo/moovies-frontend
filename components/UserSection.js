@@ -1,43 +1,63 @@
 import React, { useState, useEffect } from "react"
 import styles from "../styles/UserSection.module.scss"
+import axios from "axios"
 import Favorites from "./Favorites"
 import WatchList from "./WatchList"
-import axios from "axios"
 import ShowFavorites from "./ShowFavorites"
 import ShowWatchList from "./showWatchList"
 
 const UserSection = ({ userName, userId }) => {
   const [favoriteList, setFavoriteList] = useState([])
   const [watchList, setWatchList] = useState([])
+  const [showFavoriteList, setShowFavoriteList] = useState([])
+  const [showWatchList, setShowWatchList] = useState([])
 
-  useEffect(
-    (e) => {
-      axios
-        .get(`http://localhost:8000/api/user/favorite/${localStorage.user}`)
-        .then((res) => {
-          {
-            res.data ? (console.log(res.data), setFavoriteList(res.data)) : null
-          }
-        })
-        .catch((err) => {
-          console.log(err, "This is the error")
-        })
-    },
-
-    []
-  )
-  useEffect((e) => {
-    axios
-      .get(`http://localhost:8000/api/user/watchList/${localStorage.user}`)
-      .then((res) => {
-        {
-          res.data ? (console.log(res.data), setWatchList(res.data)) : null
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch favorite list
+        const favoriteRes = await axios.get(
+          `http://localhost:8000/api/user/favorite/${localStorage.user}`
+        )
+        if (favoriteRes.data) {
+          console.log(favoriteRes.data)
+          setFavoriteList(favoriteRes.data)
         }
-      })
-      .catch((err) => {
+
+        // Fetch watch list
+        const watchListRes = await axios.get(
+          `http://localhost:8000/api/user/watchList/${localStorage.user}`
+        )
+        if (watchListRes.data) {
+          console.log(watchListRes.data)
+          setWatchList(watchListRes.data)
+        }
+
+        // Fetch show favorite list
+        const showFavoriteRes = await axios.get(
+          `http://localhost:8000/api/user/showFavorite/${localStorage.user}`
+        )
+        if (showFavoriteRes.data) {
+          console.log(showFavoriteRes.data)
+          setShowFavoriteList(showFavoriteRes.data)
+        }
+
+        // Fetch show watch list
+        const showWatchListRes = await axios.get(
+          `http://localhost:8000/api/user/showWatchList/${localStorage.user}`
+        )
+        if (showWatchListRes.data) {
+          console.log(showWatchListRes.data, "<-- showWatchList")
+          setShowWatchList(showWatchListRes.data)
+        }
+      } catch (err) {
         console.log(err, "This is the error")
-      })
+      }
+    }
+
+    fetchData()
   }, [])
+
   return (
     <>
       <main className={styles.main}>
@@ -50,8 +70,8 @@ const UserSection = ({ userName, userId }) => {
           <WatchList watchList={watchList} />
         </section>
         <section className={styles.userContent}>
-          <ShowFavorites />
-          <ShowWatchList />
+          <ShowFavorites showFavoriteList={showFavoriteList} />
+          <ShowWatchList showWatchList={showWatchList} />
         </section>
       </main>
     </>

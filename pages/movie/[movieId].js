@@ -10,8 +10,13 @@ const SingleMovie = ({ movie, providers }) => {
   const [watchList, setWatchList] = useState(false)
   const [idFavorite, setIdFavorite] = useState("")
   const [idWatchList, setIdWatchList] = useState("")
+  const [user, setUser] = useState("")
 
   const router = useRouter()
+
+  useEffect(() => {
+    if (localStorage.user === true) then(setUser(local.storage.user))
+  }, [])
 
   useEffect(() => {
     axios

@@ -12,50 +12,62 @@ const UserSection = ({ userName, userId }) => {
   const [showFavoriteList, setShowFavoriteList] = useState([])
   const [showWatchList, setShowWatchList] = useState([])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Fetch favorite list
-        const favoriteRes = await axios.get(
-          `http://localhost:8000/api/user/favorite/${localStorage.user}`
-        )
-        if (favoriteRes.data) {
-          console.log(favoriteRes.data)
-          setFavoriteList(favoriteRes.data)
+  useEffect((e) => {
+    axios
+      .get(`http://localhost:8000/api/user/favorite/${localStorage.user}`)
+      .then((res) => {
+        {
+          res.data ? (console.log(res.data), setFavoriteList(res.data)) : null
         }
-
-        // Fetch watch list
-        const watchListRes = await axios.get(
-          `http://localhost:8000/api/user/watchList/${localStorage.user}`
-        )
-        if (watchListRes.data) {
-          console.log(watchListRes.data)
-          setWatchList(watchListRes.data)
-        }
-
-        // Fetch show favorite list
-        const showFavoriteRes = await axios.get(
-          `http://localhost:8000/api/user/showFavorite/${localStorage.user}`
-        )
-        if (showFavoriteRes.data) {
-          console.log(showFavoriteRes.data)
-          setShowFavoriteList(showFavoriteRes.data)
-        }
-
-        // Fetch show watch list
-        const showWatchListRes = await axios.get(
-          `http://localhost:8000/api/user/showWatchList/${localStorage.user}`
-        )
-        if (showWatchListRes.data) {
-          console.log(showWatchListRes.data, "<-- showWatchList")
-          setShowWatchList(showWatchListRes.data)
-        }
-      } catch (err) {
+      })
+      .catch((err) => {
         console.log(err, "This is the error")
-      }
-    }
+      })
+  }, [])
 
-    fetchData()
+  useEffect((e) => {
+    axios
+      .get(`http://localhost:8000/api/user/watchList/${localStorage.user}`)
+      .then((res) => {
+        {
+          res.data ? (console.log(res.data), setWatchList(res.data)) : null
+        }
+      })
+      .catch((err) => {
+        console.log(err, "This is the error")
+      })
+  }, [])
+
+  useEffect((e) => {
+    axios
+      .get(`http://localhost:8000/api/user/showFavorite/${localStorage.user}`)
+      .then((res) => {
+        {
+          res.data
+            ? (console.log(res.data), setShowFavoriteList(res.data))
+            : null
+        }
+      })
+      .catch((err) => {
+        console.log(err, "This is the error")
+      })
+  }, [])
+
+  useEffect((e) => {
+    axios
+      .get(`http://localhost:8000/api/user/showWatchList/${localStorage.user}`)
+      .then((res) => {
+        {
+          res.data
+            ? (console.log(res.data, "<-- showWatchList"),
+              setShowWatchList(res.data),
+              console.log(showWatchList, "<-- showWatchList"))
+            : null
+        }
+      })
+      .catch((err) => {
+        console.log(err, "This is the error")
+      })
   }, [])
 
   return (
@@ -79,18 +91,3 @@ const UserSection = ({ userName, userId }) => {
 }
 
 export default UserSection
-
-// export async function getServerSideProps() {
-//   const movieResponse = await fetch(
-//     `http://localhost:8000/api/user/movie/${localStorage.getItem("user")}`
-//   )
-//   const movieData = await movieResponse.json()
-//   console.log("List of user movies", movieData)
-//   return {
-//     props: {
-//       movieList: movieData,
-//     },
-//   }
-// }
-
-// ${localStorage.getItem("user")}

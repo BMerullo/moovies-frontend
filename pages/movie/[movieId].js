@@ -8,6 +8,8 @@ import axios from "axios"
 const SingleMovie = ({ movie, providers }) => {
   const [favorite, setFavorite] = useState(false)
   const [watchList, setWatchList] = useState(false)
+  const [idFavorite, setIdFavorite] = useState("")
+  const [idWatchList, setIdWatchList] = useState("")
 
   const router = useRouter()
 
@@ -20,6 +22,7 @@ const SingleMovie = ({ movie, providers }) => {
         console.log(res.data)
         if (res.data) setFavorite(true)
         else setFavorite(false)
+        setIdFavorite(res.data._id)
       })
       .catch((err) => {
         console.log(err)
@@ -35,6 +38,7 @@ const SingleMovie = ({ movie, providers }) => {
         console.log(res.data)
         if (res.data) setWatchList(true)
         else setWatchList(false)
+        setIdWatchList(res.data._id)
       })
       .catch((err) => {
         console.log(err)
@@ -58,6 +62,18 @@ const SingleMovie = ({ movie, providers }) => {
       })
   }
 
+  const deleteFavorite = () => {
+    axios
+      .delete(`http://localhost:8000/api/favorite/${idFavorite}`)
+      .then((res) => {
+        console.log(res)
+        setFavorite(false)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   const submitWatchList = (e) => {
     const selectedData = {
       movieId: movie.id,
@@ -75,12 +91,25 @@ const SingleMovie = ({ movie, providers }) => {
       })
   }
 
+  const deleteWatchList = () => {
+    axios
+      .delete(`http://localhost:8000/api/watchList/${idWatchList}`)
+      .then((res) => {
+        console.log(res.data)
+        setWatchList(false)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   return (
     <main>
       <Container>
         <section className={styles.btnSection}>
           {favorite === true ? (
-            <div className={styles.heart}>
+            <div className={styles.btn2}>
+              <span className={styles.btnText}>Remove from Favorites</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -88,6 +117,7 @@ const SingleMovie = ({ movie, providers }) => {
                 fill="currentColor"
                 className="bi bi-heart-fill"
                 viewBox="0 0 22 20"
+                onClick={deleteFavorite}
               >
                 <path
                   fill-rule="evenodd"
@@ -112,7 +142,8 @@ const SingleMovie = ({ movie, providers }) => {
             </div>
           )}
           {watchList === true ? (
-            <div className={styles.star}>
+            <div className={styles.btn1}>
+              <span className={styles.btnText}>Remove from Watchlist</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="28"
@@ -120,6 +151,7 @@ const SingleMovie = ({ movie, providers }) => {
                 fill="currentColor"
                 className="bi bi-star-fill"
                 viewBox="0 0 22 20"
+                onClick={deleteWatchList}
               >
                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
               </svg>

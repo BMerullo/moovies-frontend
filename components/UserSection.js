@@ -73,15 +73,9 @@ const UserSection = ({ userName, userId }) => {
   return (
     <>
       <main className={styles.main}>
-        <p>
-          Welcome to your MOOVIES{" "}
-          <span style={{ color: "#0d6efd" }}>{userName}</span>
-        </p>
         <section className={styles.userContent}>
           <Favorites favoriteList={favoriteList} />
           <WatchList watchList={watchList} />
-        </section>
-        <section className={styles.userContent}>
           <ShowFavorites showFavoriteList={showFavoriteList} />
           <ShowWatchList showWatchList={showWatchList} />
         </section>

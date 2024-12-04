@@ -7,7 +7,7 @@ const Favorites = ({ favoriteList }) => {
   console.log(favoriteList, "<---DATA")
   return (
     <>
-      <h1>Favorite Movies</h1>
+      <h1>Favorite Moovies</h1>
 
       <section className={styles.backgroundBox}>
         <article className={styles.rowContainer}>

@@ -1,0 +1,49 @@
+.rowContainer {
+  display: flex;
+  overflow-x: auto;
+  background-color: transparent;
+  padding: 0px 5px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 25px;
+  margin-left: 5px;
+}
+
+.card:hover {
+  scale: 1.1;
+}
+
+.backgroundBox {
+  padding-left: 15px;
+  padding-right: 20px;
+  background-color: black;
+  border-radius: 1rem;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.subtitle {
+  color: #0d6efd;
+  margin: 20px 0px 10px 0px;
+}
+
+.subtitleLink {
+  color: #0d6efd;
+  width: 100%;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.link {
+  text-decoration: none;
+}

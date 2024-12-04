@@ -3,17 +3,18 @@ import Link from "next/link"
 import styles from "../styles/UserSideScroll.module.scss"
 import Card from "react-bootstrap/Card"
 
-const WatchList = ({ watchList }) => {
+const ShowFavorites = ({ showFavoriteList }) => {
+  console.log(showFavoriteList, "<---SHOW LIST")
   return (
     <>
-      <h1>Movies Watchlist</h1>
+      <h1>Favorite Shows</h1>
       <section className={styles.backgroundBox}>
         <article className={styles.rowContainer}>
-          {watchList.map((movie, index) => {
+          {showFavoriteList.map((movie, index) => {
             return (
               <section key={index}>
                 <div className={styles.card}>
-                  <Link href={`movie/${movie.movieId}`}>
+                  <Link href={`tv/${movie.showId}`}>
                     <Card style={{ width: "6rem" }}>
                       <Card.Img
                         className="rounded "
@@ -32,4 +33,4 @@ const WatchList = ({ watchList }) => {
   )
 }
 
-export default WatchList
+export default ShowFavorites

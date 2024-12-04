@@ -23,3 +23,17 @@ main {
   width: 40px;
   margin-right: 5px;
 }
+
+/* USER PAGE */
+
+.welcome-container {
+  font-size: x-large;
+  background-color: #212529;
+  border: 2px solid;
+  padding: 20px 40px;
+  border-radius: 1rem;
+  margin-top: 20px;
+  display: inline-block;
+  width: 100%;
+  color: #999;
+}

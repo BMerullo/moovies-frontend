@@ -17,9 +17,15 @@ const UserPage = ({ popularList, playingList, popularShowList }) => {
     <>
       <main>
         <Container>
+          <div class="welcome-container">
+            <p>
+              Welcome to your MOOVIES{" "}
+              <span style={{ color: "#0d6efd" }}>{userName}</span>
+            </p>
+          </div>
+          <NowPlayingCarousel playingList={playingList} />
           <UserSection userName={userName} userId={id} />
           <PopularSidescroll popularList={popularList} />
-          <NowPlayingCarousel playingList={playingList} />
           <PopularShowSidescroll popularShowList={popularShowList} />
         </Container>
       </main>

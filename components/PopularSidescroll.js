@@ -8,7 +8,7 @@ const PopularSidescroll = ({ popularList }) => {
     <>
       <section className={styles.title}>
         <Link className={styles.link} href="/popular">
-          <h2 className={styles.subtitle}>Popular</h2>
+          <h2 className={styles.subtitle}>Popular Movies</h2>
         </Link>
         <Link href="/popular">
           <h6 className={styles.subtitleLink}>See All</h6>
@@ -20,7 +20,7 @@ const PopularSidescroll = ({ popularList }) => {
             return (
               <Col key={index}>
                 <div className={styles.card}>
-                  <a href={`movie/${movie.id}`}>
+                  <Link href={`movie/${movie.id}`}>
                     <Card style={{ width: "10rem" }}>
                       <Card.Img
                         className="rounded "
@@ -28,7 +28,7 @@ const PopularSidescroll = ({ popularList }) => {
                         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                       />
                     </Card>
-                  </a>
+                  </Link>
                 </div>
               </Col>
             )

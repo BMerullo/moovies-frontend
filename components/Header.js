@@ -114,8 +114,8 @@ const Header = (props) => {
                     </NavDropdown.Item>
                   ) : (
                     <NavDropdown.Item
+                      href={`/${user}#user-section`}
                       variant="primary"
-                      onClick={() => setModalShow(true)}
                     >
                       {user}
                     </NavDropdown.Item>

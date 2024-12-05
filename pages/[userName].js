@@ -24,7 +24,9 @@ const UserPage = ({ popularList, playingList, popularShowList }) => {
             </p>
           </div>
           <NowPlayingCarousel playingList={playingList} />
-          <UserSection userName={userName} userId={id} />
+          <div id="user-section">
+            <UserSection userName={userName} userId={id} />
+          </div>
           <PopularSidescroll popularList={popularList} />
           <PopularShowSidescroll popularShowList={popularShowList} />
         </Container>

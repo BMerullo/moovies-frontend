@@ -4,7 +4,7 @@ import axios from "axios"
 import Favorites from "./Favorites"
 import WatchList from "./WatchList"
 import ShowFavorites from "./ShowFavorites"
-import ShowWatchList from "./showWatchList"
+import ShowWatchList from "../components/ShowWatchList"
 
 const UserSection = ({ userName, userId }) => {
   const [favoriteList, setFavoriteList] = useState([])

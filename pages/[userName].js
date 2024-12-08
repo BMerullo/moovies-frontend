@@ -5,6 +5,7 @@ import PopularSidescroll from "@/components/PopularSidescroll"
 import NowPlayingCarousel from "@/components/NowPlayingCarousel"
 import PopularShowSidescroll from "@/components/PopularShowSidescroll"
 import UserSection from "@/components/UserSection"
+import Link from "next/link"
 
 const UserPage = ({ popularList, playingList, popularShowList }) => {
   const router = useRouter()
@@ -18,10 +19,12 @@ const UserPage = ({ popularList, playingList, popularShowList }) => {
       <main>
         <Container>
           <div class="welcome-container">
-            <p>
-              Welcome to your MOOVIES{" "}
-              <span style={{ color: "#0d6efd" }}>{userName}</span>
-            </p>
+            <Link href={`/${user}#user-section`}>
+              <p>
+                Welcome to your MOOVIES{" "}
+                <span style={{ color: "#0d6efd" }}>{userName}</span>
+              </p>
+            </Link>
           </div>
           <NowPlayingCarousel playingList={playingList} />
           <div id="user-section">

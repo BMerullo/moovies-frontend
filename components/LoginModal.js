@@ -32,7 +32,7 @@ const LoginModal = (props) => {
     e.preventDefault()
 
     axios
-      .post("https://localhost:8000/api/user/register", user, {
+      .post("http://localhost:8000/api/user/register", user, {
         withCredentials: true,
       })
       .then((res) => {
@@ -61,7 +61,7 @@ const LoginModal = (props) => {
     e.preventDefault()
     axios
       .post(
-        "https://localhost:8000/api/user/login",
+        "http://localhost:8000/api/user/login",
         {
           email: email,
           password: password,

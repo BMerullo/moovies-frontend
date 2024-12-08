@@ -19,12 +19,12 @@ const UserPage = ({ popularList, playingList, popularShowList }) => {
       <main>
         <Container>
           <div class="welcome-container">
-            <Link href={`/${user}#user-section`}>
-              <p>
-                Welcome to your MOOVIES{" "}
-                <span style={{ color: "#0d6efd" }}>{userName}</span>
-              </p>
-            </Link>
+            <p>
+              Welcome to your MOOVIES{" "}
+              {/* <Link href={`/${user}#user-section`}> */}
+              <span style={{ color: "#0d6efd" }}>{userName}</span>
+              {/* </Link> */}
+            </p>
           </div>
           <NowPlayingCarousel playingList={playingList} />
           <div id="user-section">

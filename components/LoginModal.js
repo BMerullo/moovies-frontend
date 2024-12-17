@@ -32,13 +32,9 @@ const LoginModal = (props) => {
     e.preventDefault()
 
     axios
-      .post(
-        "https://moovies-server.onrender.com:8000/api/user/register",
-        user,
-        {
-          withCredentials: true,
-        }
-      )
+      .post("https://moovies-server.onrender.com/api/user/register", user, {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log("res.data", res.data)
         setUser({
@@ -61,11 +57,10 @@ const LoginModal = (props) => {
       })
   }
 
-  const userLogin = (e) => {
-    e.preventDefault()
+  const userLogin = () => {
     axios
       .post(
-        "https://moovies-server.onrender.com:8000/api/user/login",
+        "https://moovies-server.onrender.com/api/user/login",
         {
           email: email,
           password: password,

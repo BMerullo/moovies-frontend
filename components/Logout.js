@@ -9,7 +9,7 @@ const Logout = ({ loggedIn, setLoggedIn }) => {
     // e.preventDefault()
     axios
       .post(
-        "https://moovies-server.onrender.com:8000/api/user/logout",
+        "https://moovies-server.onrender.com/api/user/logout",
         {},
         {
           withCredentials: true,

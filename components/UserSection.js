@@ -14,7 +14,9 @@ const UserSection = ({ userName, userId }) => {
 
   useEffect((e) => {
     axios
-      .get(`https://localhost:8000/api/user/favorite/${localStorage.user}`)
+      .get(
+        `https://moovies-server.onrender.com:8000/api/user/favorite/${localStorage.user}`
+      )
       .then((res) => {
         {
           res.data ? (console.log(res.data), setFavoriteList(res.data)) : null
@@ -27,7 +29,9 @@ const UserSection = ({ userName, userId }) => {
 
   useEffect((e) => {
     axios
-      .get(`https://localhost:8000/api/user/watchList/${localStorage.user}`)
+      .get(
+        `https://moovies-server.onrender.com:8000/api/user/watchList/${localStorage.user}`
+      )
       .then((res) => {
         {
           res.data ? (console.log(res.data), setWatchList(res.data)) : null
@@ -40,7 +44,9 @@ const UserSection = ({ userName, userId }) => {
 
   useEffect((e) => {
     axios
-      .get(`https://localhost:8000/api/user/showFavorite/${localStorage.user}`)
+      .get(
+        `https://moovies-server.onrender.com:8000/api/user/showFavorite/${localStorage.user}`
+      )
       .then((res) => {
         {
           res.data
@@ -55,7 +61,9 @@ const UserSection = ({ userName, userId }) => {
 
   useEffect((e) => {
     axios
-      .get(`https://localhost:8000/api/user/showWatchList/${localStorage.user}`)
+      .get(
+        `https://moovies-server.onrender.com:8000/api/user/showWatchList/${localStorage.user}`
+      )
       .then((res) => {
         {
           res.data

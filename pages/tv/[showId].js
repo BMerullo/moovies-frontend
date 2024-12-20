@@ -132,7 +132,7 @@ const SingleShow = ({ show, providers }) => {
           <section className={styles.btnSection}>
             {favorite === true ? (
               <div className={styles.btn2}>
-                <span className={styles.btnText}>Remove from Favorites</span>
+                {/* <span className={styles.btnText}>Remove from Favorites</span> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -150,7 +150,7 @@ const SingleShow = ({ show, providers }) => {
               </div>
             ) : (
               <div className={styles.btn2}>
-                <span className={styles.btnText}>Add to Favorites</span>
+                {/* <span className={styles.btnText}>Add to Favorites</span> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -166,7 +166,7 @@ const SingleShow = ({ show, providers }) => {
             )}
             {watchList === true ? (
               <div className={styles.btn1}>
-                <span className={styles.btnText}>Remove from Watchlist</span>
+                {/* <span className={styles.btnText}>Remove from Watchlist</span> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="28"
@@ -181,7 +181,7 @@ const SingleShow = ({ show, providers }) => {
               </div>
             ) : (
               <div className={styles.btn1}>
-                <span className={styles.btnText}>Add to Watchlist</span>
+                {/* <span className={styles.btnText}>Add to Watchlist</span> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="28"

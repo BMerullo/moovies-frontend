@@ -20,7 +20,7 @@ const SingleShow = ({ show, providers }) => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8000/api/user/${localStorage.user}/showFavorite/${show.id}`
+        `https://moovies-server.onrender.com/api/user/${localStorage.user}/showFavorite/${show.id}`
       )
       .then((res) => {
         console.log(res.data._id)
@@ -36,7 +36,7 @@ const SingleShow = ({ show, providers }) => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8000/api/user/${localStorage.user}/showWatchList/${show.id}`
+        `https://moovies-server.onrender.com/api/user/${localStorage.user}/showWatchList/${show.id}`
       )
       .then((res) => {
         console.log(res.data)
@@ -57,9 +57,13 @@ const SingleShow = ({ show, providers }) => {
     }
 
     axios
-      .post("http://localhost:8000/api/showFavorite", selectedData, {
-        withCredentials: true,
-      })
+      .post(
+        "https://moovies-server.onrender.com/api/showFavorite",
+        selectedData,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log("res.data", res.data)
         setFavorite(true)
@@ -71,7 +75,9 @@ const SingleShow = ({ show, providers }) => {
 
   const deleteFavorite = () => {
     axios
-      .delete(`http://localhost:8000/api/showFavorite/${idFavorite}`)
+      .delete(
+        `https://moovies-server.onrender.com/api/showFavorite/${idFavorite}`
+      )
       .then((res) => {
         console.log(res)
         setFavorite(false)
@@ -89,9 +95,13 @@ const SingleShow = ({ show, providers }) => {
     }
 
     axios
-      .post("http://localhost:8000/api/showWatchList", selectedData, {
-        withCredentials: true,
-      })
+      .post(
+        "https://moovies-server.onrender.com/api/showWatchList",
+        selectedData,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log("_id", res.data.id)
         setWatchList(true)
@@ -103,7 +113,9 @@ const SingleShow = ({ show, providers }) => {
 
   const deleteWatchList = () => {
     axios
-      .delete(`http://localhost:8000/api/showWatchList/${idWatchList}`)
+      .delete(
+        `https://moovies-server.onrender.com/api/showWatchList/${idWatchList}`
+      )
       .then((res) => {
         console.log(res.data)
         setWatchList(false)

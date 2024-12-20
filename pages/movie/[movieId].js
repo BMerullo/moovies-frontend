@@ -23,7 +23,7 @@ const SingleMovie = ({ movie, providers }) => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8000/api/user/${localStorage.user}/favorite/${movie.id}`
+        `https://moovies-server.onrender.com/api/user/${localStorage.user}/favorite/${movie.id}`
       )
       .then((res) => {
         console.log(res.data)
@@ -39,7 +39,7 @@ const SingleMovie = ({ movie, providers }) => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8000/api/user/${localStorage.user}/watchList/${movie.id}`
+        `https://moovies-server.onrender.com/api/user/${localStorage.user}/watchList/${movie.id}`
       )
       .then((res) => {
         console.log(res.data)
@@ -60,7 +60,7 @@ const SingleMovie = ({ movie, providers }) => {
     }
 
     axios
-      .post("http://localhost:8000/api/favorite", selectedData, {
+      .post("https://moovies-server.onrender.com/api/favorite", selectedData, {
         withCredentials: true,
       })
       .then((res) => {
@@ -71,7 +71,7 @@ const SingleMovie = ({ movie, providers }) => {
 
   const deleteFavorite = () => {
     axios
-      .delete(`http://localhost:8000/api/favorite/${idFavorite}`)
+      .delete(`https://moovies-server.onrender.com/api/favorite/${idFavorite}`)
       .then((res) => {
         console.log(res)
         setFavorite(false)
@@ -89,7 +89,7 @@ const SingleMovie = ({ movie, providers }) => {
     }
 
     axios
-      .post("http://localhost:8000/api/watchList", selectedData, {
+      .post("https://moovies-server.onrender.com/api/watchList", selectedData, {
         withCredentials: true,
       })
       .then((res) => {
@@ -100,7 +100,9 @@ const SingleMovie = ({ movie, providers }) => {
 
   const deleteWatchList = () => {
     axios
-      .delete(`http://localhost:8000/api/watchList/${idWatchList}`)
+      .delete(
+        `https://moovies-server.onrender.com/api/watchList/${idWatchList}`
+      )
       .then((res) => {
         console.log(res.data)
         setWatchList(false)
